@@ -25,6 +25,8 @@ const publicRoutes = require("./routes/public");
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 connectDB();
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS
