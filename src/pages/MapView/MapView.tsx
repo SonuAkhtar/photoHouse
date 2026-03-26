@@ -81,7 +81,6 @@ const COORDS: Record<string, [number, number]> = {
   china: [35.86, 104.19],
   mumbai: [19.07, 72.87],
   india: [20.59, 78.96],
-  dubai: [25.2, 55.27],
   maldives: [3.2, 73.22],
   iceland: [64.96, -19.02],
   reykjavik: [64.13, -21.89],
