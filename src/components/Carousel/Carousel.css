@@ -1,0 +1,207 @@
+/* ═══════════════════════════════════════════════════════════════
+   CAROUSEL
+═══════════════════════════════════════════════════════════════ */
+
+.carousel { padding: 12px 0 60px; }
+
+.carousel_stage-wrap { position: relative; }
+
+.carousel_stage {
+  position: relative;
+  width: 100%;
+  height: 72vh;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.carousel_img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.carousel_img-enter-next { animation: slideInRight  var(--speed) var(--ease-out) forwards; }
+.carousel_img-exit-next  { animation: slideOutLeft  var(--speed) var(--ease-out) forwards; }
+.carousel_img-enter-prev { animation: slideInLeft   var(--speed) var(--ease-out) forwards; }
+.carousel_img-exit-prev  { animation: slideOutRight var(--speed) var(--ease-out) forwards; }
+
+/* ── Nav arrows ── */
+.carousel_nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  z-index: 10;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(10,9,8,0.55);
+  border: 1px solid rgba(245,240,235,0.10);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #f5f0eb;
+  transition: background var(--speed-fast) var(--ease), border-color var(--speed-fast) var(--ease), transform var(--speed-fast) var(--ease), box-shadow var(--speed-fast) var(--ease);
+}
+.carousel_nav:hover {
+  background: rgba(245,240,235,0.12);
+  border-color: rgba(245,240,235,0.3);
+  transform: translateY(-50%) scale(1.07);
+}
+.carousel_nav-prev { left: 28px; }
+.carousel_nav-next { right: 28px; }
+
+/* ── Caption + counter ── */
+.carousel_caption-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 52px;
+}
+.carousel_caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  transition: color 0.4s ease;
+}
+.carousel_counter {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  transition: color 0.4s ease;
+}
+
+/* ── Thumbnails ── */
+.carousel_thumbs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 52px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.carousel_thumbs::-webkit-scrollbar { display: none; }
+
+.carousel_thumb {
+  flex-shrink: 0;
+  width: 90px; height: 62px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-thumb);
+  opacity: 0.38;
+  transition: border-color var(--speed-fast) var(--ease), opacity var(--speed-fast) var(--ease), transform var(--speed-fast) var(--ease);
+}
+.carousel_thumb:hover { opacity: 0.70; transform: translateY(-2px); }
+.carousel_thumb-active { border-color: var(--accent, #89b4c8); opacity: 1; }
+.carousel_thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME-SPECIFIC BUTTON OVERRIDES (carousel nav)
+═══════════════════════════════════════════════════════════════ */
+
+/* Bloom — slightly warmer, rounded ── */
+[data-theme="bloom"] .carousel_nav {
+  background: rgba(5,4,2,0.55);
+  border-color: rgba(196,131,106,0.18);
+}
+[data-theme="bloom"] .carousel_nav:hover {
+  background: rgba(196,131,106,0.18);
+  border-color: rgba(196,131,106,0.50);
+}
+
+/* Coastal — clean circular ── */
+[data-theme="coastal"] .carousel_nav {
+  background: rgba(4,10,14,0.55);
+  border-color: rgba(91,158,181,0.20);
+}
+[data-theme="coastal"] .carousel_nav:hover {
+  background: rgba(91,158,181,0.20);
+  border-color: rgba(91,158,181,0.55);
+}
+
+/* Tokyo — sharp square, neon ── */
+[data-theme="tokyo"] .carousel_nav {
+  border-radius: 0;
+  background: rgba(4,4,8,0.75);
+  border-color: rgba(255,77,109,0.25);
+  backdrop-filter: none;
+}
+[data-theme="tokyo"] .carousel_nav:hover {
+  background: rgba(255,77,109,0.15);
+  border-color: rgba(255,77,109,0.60);
+  box-shadow: 0 0 14px rgba(255,77,109,0.30);
+  transform: translateY(-50%) scale(1);
+}
+
+/* Film — gold border ── */
+[data-theme="film"] .carousel_nav {
+  background: rgba(8,6,4,0.65);
+  border-color: rgba(200,169,110,0.18);
+}
+[data-theme="film"] .carousel_nav:hover {
+  background: rgba(200,169,110,0.12);
+  border-color: rgba(200,169,110,0.50);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLET  (max 1024px)
+═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .carousel_caption-bar { padding: 14px 32px; }
+  .carousel_thumbs      { padding: 10px 32px 0; }
+  .carousel_nav-prev    { left: 16px; }
+  .carousel_nav-next    { right: 16px; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE  (max 768px) — full-screen immersive carousel
+═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .carousel { padding: 0; }
+
+  .carousel_stage {
+    height: calc(100dvh - var(--nav-h) - 48px);
+    min-height: 320px;
+  }
+
+  /* Caption overlaid at bottom of image */
+  .carousel_caption-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    padding: 32px 20px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.70) 0%, transparent 100%);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    pointer-events: none;
+  }
+  .carousel_caption {
+    font-size: 13px;
+    color: rgba(245,240,235,0.85);
+  }
+  .carousel_counter {
+    font-size: 10px;
+    color: rgba(245,240,235,0.50);
+  }
+
+  /* Wrap stage + caption together so overlay works */
+  .carousel_stage-wrap {
+    position: relative;
+  }
+
+  .carousel_nav      { width: 44px; height: 44px; font-size: 20px; }
+  .carousel_nav-prev { left: 12px; }
+  .carousel_nav-next { right: 12px; }
+
+  .carousel_thumbs   { padding: 10px 16px 0; gap: 6px; }
+  .carousel_thumb    { width: 60px; height: 42px; }
+}

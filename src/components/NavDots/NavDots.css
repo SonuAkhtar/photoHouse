@@ -1,0 +1,56 @@
+/* ═══════════════════════════════════════════════════════════════
+   NAV DOTS
+═══════════════════════════════════════════════════════════════ */
+
+.nav-dots {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.nav-dots_dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  padding: 0;
+  transition: background var(--speed) var(--ease), transform var(--speed) var(--ease), height var(--speed) var(--ease), border-radius var(--speed) var(--ease);
+}
+.nav-dots_dot-active {
+  background: var(--dot-accent, #89b4c8);
+  transform: scaleX(1.5);
+  border-radius: 2px;
+  height: 16px;
+}
+
+/* Tokyo — square dots, sharp ── */
+[data-theme="tokyo"] .nav-dots_dot {
+  border-radius: 0;
+}
+[data-theme="tokyo"] .nav-dots_dot-active {
+  border-radius: 0;
+  box-shadow: 0 0 8px rgba(255,77,109,0.50);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLET  (max 1024px)
+═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .nav-dots { right: 20px; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE  (max 768px)
+═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .nav-dots { display: none; }
+}

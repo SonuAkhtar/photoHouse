@@ -1,0 +1,323 @@
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme, themeList } from '../../context/ThemeContext';
+import { useAuth } from '../../context/AuthContext';
+import UploadModal from '../UploadModal/UploadModal';
+import type { ApiTrip } from '../../services/api';
+import './SiteHeader.css';
+
+const navLinks = [
+  { label: 'All Trips', href: '/trips' },
+  { label: 'Map',       href: '/map' },
+  { label: 'Stats',     href: '/stats' },
+  { label: 'About Me',  href: '/about' },
+  { label: 'Interests', href: '/interests' },
+];
+
+interface Props {
+  onTripCreated?: (trip: ApiTrip) => void;
+}
+
+export default function SiteHeader({ onTripCreated }: Props) {
+  const { theme, setTheme }     = useTheme();
+  const { user, logout }        = useAuth();
+  const navigate                = useNavigate();
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [uploadOpen, setUploadOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const pickerRef = useRef<HTMLDivElement>(null);
+  const userRef   = useRef<HTMLDivElement>(null);
+  const location  = useLocation();
+
+  const active = themeList.find(t => t.id === theme)!;
+
+  // Close theme picker on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (!pickerRef.current?.contains(e.target as Node)) setPickerOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  // Close user menu on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (!userRef.current?.contains(e.target as Node)) setUserMenuOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const prevPathRef = useRef(location.pathname);
+  if (prevPathRef.current !== location.pathname) {
+    prevPathRef.current = location.pathname;
+    setMobileOpen(false);
+    setPickerOpen(false);
+    setUserMenuOpen(false);
+  }
+
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const handleTripCreated = (trip: ApiTrip) => {
+    setUploadOpen(false);
+    onTripCreated?.(trip);
+  };
+
+  return (
+    <>
+      <header className="site-header">
+        <Link to="/" className="site-header_logo" aria-label="Photo House — home">
+          <span className="site-header_logo-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2.5 L22 10 L22 22 L2 22 L2 10 Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
+              <line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" strokeWidth="0.9"/>
+              <circle cx="12" cy="16.5" r="4.8" stroke="currentColor" strokeWidth="1.1"/>
+              <circle cx="12" cy="16.5" r="2.2" stroke="currentColor" strokeWidth="0.9"/>
+              <circle cx="12" cy="16.5" r="0.7" fill="currentColor"/>
+              <line x1="13.56" y1="14.94" x2="14.97" y2="13.53" stroke="currentColor" strokeWidth="0.85"/>
+              <line x1="13.56" y1="18.06" x2="14.97" y2="19.47" stroke="currentColor" strokeWidth="0.85"/>
+              <line x1="10.44" y1="18.06" x2="9.03"  y2="19.47" stroke="currentColor" strokeWidth="0.85"/>
+              <line x1="10.44" y1="14.94" x2="9.03"  y2="13.53" stroke="currentColor" strokeWidth="0.85"/>
+            </svg>
+          </span>
+          <span className="site-header_logo-text">
+            <span className="site-header_logo-h">Photo</span>
+            <span className="site-header_logo-p">house</span>
+          </span>
+        </Link>
+
+        <nav className="site-header_nav" aria-label="Primary navigation">
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className={`site-header_link${location.pathname === link.href ? ' site-header_link-active' : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="site-header_controls">
+          {/* Add memory button */}
+          <button
+            className="site-header_add-btn"
+            onClick={() => setUploadOpen(true)}
+            aria-label="Add a memory"
+            title="Add a memory"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+              <line x1="7" y1="1" x2="7" y2="13"/>
+              <line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+            <span className="site-header_add-label">Add Memory</span>
+          </button>
+
+          {/* Theme picker */}
+          <div className="site-header_right" ref={pickerRef}>
+            <button
+              className="site-header_theme-btn"
+              onClick={() => setPickerOpen(o => !o)}
+              aria-label="Change theme"
+              aria-expanded={pickerOpen}
+            >
+              <span className="site-header_theme-swatches">
+                {active.swatches.map((c, i) => (
+                  <span key={i} className="site-header_theme-swatch" style={{ background: c }} />
+                ))}
+              </span>
+              <span className="site-header_theme-name">{active.name}</span>
+              <span className={`site-header_theme-chevron${pickerOpen ? ' site-header_theme-chevron-open' : ''}`}>›</span>
+            </button>
+
+            <AnimatePresence>
+              {pickerOpen && (
+                <motion.div
+                  className="theme-picker"
+                  initial={{ opacity: 0, y: -8, scaleY: 0.94 }}
+                  animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                  exit={{ opacity: 0, y: -8, scaleY: 0.94 }}
+                  transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  style={{ transformOrigin: 'top right' }}
+                >
+                  {themeList.map(t => (
+                    <button
+                      key={t.id}
+                      className={`theme-picker_item${t.id === theme ? ' theme-picker_item-active' : ''}`}
+                      onClick={() => { setTheme(t.id); setPickerOpen(false); }}
+                    >
+                      <span className="theme-picker_swatches">
+                        {t.swatches.map((c, i) => (
+                          <span key={i} className="theme-picker_swatch" style={{ background: c }} />
+                        ))}
+                      </span>
+                      <span className="theme-picker_info">
+                        <span className="theme-picker_name">{t.name}</span>
+                        <span className="theme-picker_desc">{t.desc}</span>
+                      </span>
+                      {t.id === theme && <span className="theme-picker_check">✓</span>}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Profile avatar dropdown */}
+          {user && (
+            <div className="site-header_user-wrap" ref={userRef} style={{ position: 'relative' }}>
+              <button
+                className="site-header_user-btn"
+                onClick={() => setUserMenuOpen(o => !o)}
+                aria-label="Account menu"
+                aria-expanded={userMenuOpen}
+                title={user.name}
+              >
+                {(user.name?.charAt(0) || '?').toUpperCase()}
+              </button>
+
+              <AnimatePresence>
+                {userMenuOpen && (
+                  <motion.div
+                    className="user-menu"
+                    initial={{ opacity: 0, y: -8, scaleY: 0.94 }}
+                    animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                    exit={{ opacity: 0, y: -8, scaleY: 0.94 }}
+                    transition={{ duration: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    style={{ transformOrigin: 'top right' }}
+                  >
+                    <div className="user-menu_info">
+                      <p className="user-menu_name">{user.name}</p>
+                      <p className="user-menu_email">{user.email}</p>
+                    </div>
+                    <div className="user-menu_divider" />
+                    <button
+                      className="user-menu_logout"
+                      onClick={() => { setUserMenuOpen(false); navigate('/profile'); }}
+                    >
+                      Profile &amp; Settings
+                    </button>
+                    <div className="user-menu_divider" />
+                    <button
+                      className="user-menu_logout"
+                      style={{ color: '#e05c5c' }}
+                      onClick={() => { setUserMenuOpen(false); logout(); navigate('/login'); }}
+                    >
+                      Sign out
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
+
+          <button
+            className="site-header_burger"
+            onClick={() => setMobileOpen(o => !o)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+          >
+            <span className={`site-header_burger-bar${mobileOpen ? ' site-header_burger-bar-open' : ''}`} />
+            <span className={`site-header_burger-bar${mobileOpen ? ' site-header_burger-bar-open' : ''}`} />
+            <span className={`site-header_burger-bar${mobileOpen ? ' site-header_burger-bar-open' : ''}`} />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="mobile-menu"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <nav className="mobile-menu_nav">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.07, duration: 0.4 }}
+                >
+                  <Link
+                    to={link.href}
+                    className={`mobile-menu_link${location.pathname === link.href ? ' mobile-menu_link-active' : ''}`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <span className="mobile-menu_link-index">0{i + 1}</span>
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 + navLinks.length * 0.07, duration: 0.4 }}
+              >
+                <button
+                  className="mobile-menu_add-btn"
+                  onClick={() => { setMobileOpen(false); setUploadOpen(true); }}
+                >
+                  + Add Memory
+                </button>
+              </motion.div>
+            </nav>
+
+            <div className="mobile-menu_themes">
+              <p className="mobile-menu_theme-label">Theme</p>
+              <div className="mobile-menu_theme-grid">
+                {themeList.map(t => (
+                  <button
+                    key={t.id}
+                    className={`mobile-menu_theme-item${t.id === theme ? ' mobile-menu_theme-item-active' : ''}`}
+                    onClick={() => { setTheme(t.id); setMobileOpen(false); }}
+                  >
+                    <span className="mobile-menu_theme-swatches">
+                      {t.swatches.map((c, i) => (
+                        <span key={i} style={{ background: c }} className="mobile-menu_theme-swatch" />
+                      ))}
+                    </span>
+                    <span className="mobile-menu_theme-name">{t.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {user && (
+              <div className="mobile-menu_user">
+                <p className="mobile-menu_user-name">{user.name}</p>
+                <button
+                  className="mobile-menu_logout"
+                  onClick={() => { setMobileOpen(false); navigate('/profile'); }}
+                >
+                  Profile & Settings
+                </button>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Upload modal */}
+      <AnimatePresence>
+        {uploadOpen && (
+          <UploadModal
+            onClose={() => setUploadOpen(false)}
+            onCreated={handleTripCreated}
+          />
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

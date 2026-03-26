@@ -1,0 +1,278 @@
+/* ═══════════════════════════════════════════════════════════════
+   TRIP CARD
+═══════════════════════════════════════════════════════════════ */
+
+.trip-card {
+  position: relative;
+  height: calc(100dvh - var(--nav-h));
+  scroll-snap-align: start;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.trip-card_bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  transition: transform 8s var(--ease);
+  will-change: transform;
+}
+.trip-card:hover .trip-card_bg { transform: scale(1.04); }
+
+.trip-card_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--card-overlay-a) 0%,
+    var(--card-overlay-b) 35%,
+    rgba(0,0,0,0.12) 65%,
+    rgba(0,0,0,0.03) 100%
+  );
+}
+
+.trip-card_index {
+  position: absolute;
+  right: 52px; bottom: 56px;
+  font-family: var(--font-display);
+  font-style: var(--font-display-style);
+  font-size: clamp(120px, 14vw, 230px);
+  font-weight: var(--font-display-weight);
+  line-height: 1;
+  color: rgba(245,240,235,0.04);
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+}
+
+.trip-card_content {
+  position: relative;
+  z-index: 2;
+  padding: 0 64px 64px;
+  max-width: 760px;
+}
+
+.trip-card_meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.trip-card_meta-line {
+  width: 36px; height: 1px;
+  background: var(--accent, #89b4c8);
+  flex-shrink: 0;
+}
+.trip-card_region {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245,240,235,0.55);
+}
+
+.trip-card_place {
+  font-family: var(--font-display);
+  font-style: var(--font-display-style);
+  font-size: clamp(56px, 8vw, 112px);
+  font-weight: var(--font-display-weight);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #f5f0eb;
+  margin-bottom: 18px;
+}
+
+.trip-card_dates {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--accent, #89b4c8);
+  margin-bottom: 18px;
+}
+
+.trip-card_summary {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.82;
+  color: rgba(245,240,235,0.52);
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+
+.trip-card_actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Primary CTA button ── */
+.trip-card_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border: 1px solid rgba(245,240,235,0.22);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f5f0eb;
+  border-radius: var(--radius-btn);
+  transition: border-color var(--speed) var(--ease), background var(--speed) var(--ease), color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+.trip-card_cta:hover {
+  border-color: var(--accent, #89b4c8);
+  background: var(--accent, #89b4c8);
+  color: #0a0908;
+}
+.trip-card_cta-arrow { transition: transform var(--speed) var(--ease); }
+.trip-card_cta:hover .trip-card_cta-arrow { transform: translateX(4px); }
+
+/* ── Instagram button ── */
+.trip-card_instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 20px;
+  border: 1px solid rgba(245,240,235,0.12);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245,240,235,0.55);
+  border-radius: var(--radius-btn);
+  transition: border-color var(--speed) var(--ease), color var(--speed) var(--ease), background var(--speed) var(--ease);
+}
+.trip-card_instagram:hover {
+  border-color: rgba(245,240,235,0.30);
+  color: #f5f0eb;
+  background: rgba(245,240,235,0.05);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME-SPECIFIC BUTTON OVERRIDES
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Noir — sharp ghost, solid white on hover ── */
+[data-theme="noir"] .trip-card_cta {
+  letter-spacing: 0.22em;
+  border-color: rgba(245,240,235,0.28);
+}
+[data-theme="noir"] .trip-card_cta:hover {
+  background: #f5f0eb;
+  border-color: #f5f0eb;
+  color: #0a0908;
+}
+
+/* ── Bloom — warm terracotta fill on hover ── */
+[data-theme="bloom"] .trip-card_cta {
+  letter-spacing: 0.14em;
+  border-color: rgba(196,131,106,0.40);
+}
+[data-theme="bloom"] .trip-card_cta:hover {
+  background: #c4836a;
+  border-color: #c4836a;
+  color: #faf7f2;
+}
+[data-theme="bloom"] .trip-card_instagram {
+  border-color: rgba(196,131,106,0.20);
+}
+[data-theme="bloom"] .trip-card_instagram:hover {
+  border-color: rgba(196,131,106,0.45);
+  color: #f5f0eb;
+  background: rgba(196,131,106,0.10);
+}
+
+/* ── Coastal — pill, blue fill on hover ── */
+[data-theme="coastal"] .trip-card_cta {
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  border-color: rgba(91,158,181,0.35);
+}
+[data-theme="coastal"] .trip-card_cta:hover {
+  background: #5b9eb5;
+  border-color: #5b9eb5;
+  color: #eef5f8;
+}
+
+/* ── Tokyo — neon fill + glow on hover ── */
+[data-theme="tokyo"] .trip-card_cta {
+  letter-spacing: 0.26em;
+  border-color: rgba(255,77,109,0.35);
+  text-transform: uppercase;
+}
+[data-theme="tokyo"] .trip-card_cta:hover {
+  background: #ff4d6d;
+  border-color: #ff4d6d;
+  color: #0c0c12;
+  box-shadow: var(--btn-shadow);
+}
+[data-theme="tokyo"] .trip-card_instagram {
+  border-color: rgba(255,77,109,0.18);
+}
+[data-theme="tokyo"] .trip-card_instagram:hover {
+  border-color: rgba(255,77,109,0.45);
+  color: #ff4d6d;
+  background: rgba(255,77,109,0.08);
+}
+
+/* ── Film — gold/sepia, uppercase ── */
+[data-theme="film"] .trip-card_cta {
+  letter-spacing: 0.22em;
+  border-color: rgba(200,169,110,0.35);
+  text-transform: uppercase;
+}
+[data-theme="film"] .trip-card_cta:hover {
+  background: #c8a96e;
+  border-color: #c8a96e;
+  color: #1c1510;
+}
+[data-theme="film"] .trip-card_instagram {
+  border-color: rgba(200,169,110,0.18);
+}
+[data-theme="film"] .trip-card_instagram:hover {
+  border-color: rgba(200,169,110,0.40);
+  color: #c8a96e;
+  background: rgba(200,169,110,0.06);
+}
+
+/* ── Typographic overrides ── */
+[data-theme="noir"] .trip-card_place   { letter-spacing: -0.03em; font-optical-sizing: auto; }
+[data-theme="bloom"] .trip-card_place  { letter-spacing: -0.01em; font-optical-sizing: auto; }
+[data-theme="bloom"] .trip-card_summary { font-weight: 400; font-size: 16px; line-height: 1.9; }
+[data-theme="coastal"] .trip-card_place { letter-spacing: -0.04em; line-height: 0.86; }
+[data-theme="tokyo"] .trip-card_place  { letter-spacing: 0.06em; line-height: 0.90; text-transform: uppercase; }
+[data-theme="tokyo"] .trip-card_summary { font-weight: 500; letter-spacing: 0.01em; }
+[data-theme="film"] .trip-card_place   { letter-spacing: 0.10em; line-height: 1.05; text-transform: uppercase; }
+[data-theme="film"] .trip-card_summary { font-size: 17px; line-height: 1.85; font-style: italic; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLET  (max 1024px)
+═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .trip-card_content { padding: 0 40px 48px; max-width: 100%; }
+  .trip-card_summary { max-width: 100%; }
+  .trip-card_index   { right: 32px; bottom: 40px; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE  (max 768px)
+═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .trip-card_content  { padding: 0 24px 36px; }
+  .trip-card_index    { display: none; }
+  .trip-card_summary  { font-size: 13px; line-height: 1.7; margin-bottom: 24px; max-width: 100%; }
+  .trip-card_place    { font-size: clamp(42px, 10vw, 72px); margin-bottom: 12px; }
+  .trip-card_meta     { margin-bottom: 12px; }
+  .trip-card_actions  { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .trip-card_cta,
+  .trip-card_instagram { width: 100%; justify-content: center; }
+}
