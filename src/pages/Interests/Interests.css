@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   INTERESTS PAGE
-═══════════════════════════════════════════════════════════════ */
-
 .interests {
   min-height: 100dvh;
   background: var(--bg);
@@ -27,7 +23,7 @@
   font-style: var(--font-display-style);
   font-size: clamp(44px, 5.5vw, 80px);
   font-weight: var(--font-display-weight);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text);
   margin-bottom: 64px;
@@ -46,9 +42,15 @@
   flex-direction: column;
   gap: 14px;
   border-radius: var(--radius-card);
-  transition: background-color 0.4s ease, border-color 0.4s ease, transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    transform var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease);
 }
-.interests_card:hover { transform: translateY(-4px); }
+.interests_card:hover {
+  transform: translateY(-4px);
+}
 .interests_card-index {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -72,7 +74,6 @@
   color: var(--text-muted);
   transition: color 0.4s ease;
 }
-
 
 .interests_loading {
   display: flex;
@@ -103,59 +104,102 @@
   text-underline-offset: 3px;
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    THEME-SPECIFIC OVERRIDES
 ═══════════════════════════════════════════════════════════════ */
 
-[data-theme="noir"]    .interests_heading { letter-spacing: -0.03em; font-optical-sizing: auto; }
-[data-theme="bloom"]   .interests_heading { letter-spacing: -0.01em; font-optical-sizing: auto; }
-[data-theme="bloom"]   .interests_card-body { font-weight: 400; font-size: 16px; line-height: 1.9; }
-[data-theme="coastal"] .interests_heading { letter-spacing: -0.04em; line-height: 0.86; }
-[data-theme="tokyo"]   .interests_heading { letter-spacing: 0.06em; line-height: 0.90; text-transform: uppercase; }
-[data-theme="tokyo"]   .interests_card-title { letter-spacing: 0.05em; }
-[data-theme="tokyo"]   .interests_card-body { font-weight: 500; letter-spacing: 0.01em; }
-[data-theme="film"]    .interests_heading { letter-spacing: 0.10em; line-height: 1.05; text-transform: uppercase; }
-[data-theme="film"]    .interests_card-title { letter-spacing: 0.08em; }
-[data-theme="film"]    .interests_card-body { font-size: 17px; line-height: 1.85; font-style: italic; }
+[data-theme="noir"] .interests_heading {
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+}
+[data-theme="bloom"] .interests_heading {
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+}
+[data-theme="bloom"] .interests_card-body {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.9;
+}
+[data-theme="coastal"] .interests_heading {
+  letter-spacing: -0.04em;
+  line-height: 0.86;
+}
+[data-theme="tokyo"] .interests_heading {
+  letter-spacing: 0.06em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+[data-theme="tokyo"] .interests_card-title {
+  letter-spacing: 0.05em;
+}
+[data-theme="tokyo"] .interests_card-body {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+[data-theme="film"] .interests_heading {
+  letter-spacing: 0.1em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+[data-theme="film"] .interests_card-title {
+  letter-spacing: 0.08em;
+}
+[data-theme="film"] .interests_card-body {
+  font-size: 17px;
+  line-height: 1.85;
+  font-style: italic;
+}
 
 /* Card hover accents per theme */
 [data-theme="bloom"] .interests_card:hover {
-  border-color: rgba(196,131,106,0.30);
-  box-shadow: 0 8px 32px rgba(196,131,106,0.10);
+  border-color: rgba(196, 131, 106, 0.3);
+  box-shadow: 0 8px 32px rgba(196, 131, 106, 0.1);
 }
 [data-theme="coastal"] .interests_card:hover {
-  border-color: rgba(91,158,181,0.35);
-  box-shadow: 0 8px 32px rgba(91,158,181,0.10);
+  border-color: rgba(91, 158, 181, 0.35);
+  box-shadow: 0 8px 32px rgba(91, 158, 181, 0.1);
 }
 [data-theme="tokyo"] .interests_card:hover {
-  border-color: rgba(255,77,109,0.30);
-  box-shadow: 0 8px 32px rgba(255,77,109,0.10);
+  border-color: rgba(255, 77, 109, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 77, 109, 0.1);
   transform: translateY(-2px);
 }
 [data-theme="film"] .interests_card:hover {
-  border-color: rgba(200,169,110,0.30);
-  box-shadow: 0 8px 32px rgba(200,169,110,0.08);
+  border-color: rgba(200, 169, 110, 0.3);
+  box-shadow: 0 8px 32px rgba(200, 169, 110, 0.08);
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    TABLET  (max 1024px)
 ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  .interests_inner { padding: 60px 40px; }
-  .interests_grid  { grid-template-columns: repeat(2, 1fr); }
+  .interests_inner {
+    padding: 60px 40px;
+  }
+  .interests_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    MOBILE  (max 768px)
 ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  .interests_inner   { padding: 40px 24px 60px; }
-  .interests_grid    { grid-template-columns: 1fr; gap: 2px; }
-  .interests_heading { font-size: clamp(32px, 10vw, 52px); margin-bottom: 40px; }
-  .interests_card    { padding: 28px 24px; }
+  .interests_inner {
+    padding: 40px 24px 60px;
+  }
+  .interests_grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .interests_heading {
+    font-size: clamp(32px, 10vw, 52px);
+    margin-bottom: 40px;
+  }
+  .interests_card {
+    padding: 28px 24px;
+  }
 }

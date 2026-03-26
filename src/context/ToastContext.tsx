@@ -1,6 +1,12 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  type ReactNode,
+} from "react";
 
-export type ToastType = 'success' | 'error' | 'info';
+export type ToastType = "success" | "error" | "info";
 
 export interface Toast {
   id: string;
@@ -29,18 +35,21 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
   const add = useCallback((message: string, type: ToastType) => {
     const id = crypto.randomUUID();
-    setToasts(prev => [...prev.slice(-4), { id, message, type }]);
-    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 4000);
+    setToasts((prev) => [...prev.slice(-4), { id, message, type }]);
+    setTimeout(
+      () => setToasts((prev) => prev.filter((t) => t.id !== id)),
+      4000,
+    );
   }, []);
 
   const dismiss = useCallback((id: string) => {
-    setToasts(prev => prev.filter(t => t.id !== id));
+    setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
   const toast = {
-    success: (msg: string) => add(msg, 'success'),
-    error:   (msg: string) => add(msg, 'error'),
-    info:    (msg: string) => add(msg, 'info'),
+    success: (msg: string) => add(msg, "success"),
+    error: (msg: string) => add(msg, "error"),
+    info: (msg: string) => add(msg, "info"),
   };
 
   return (

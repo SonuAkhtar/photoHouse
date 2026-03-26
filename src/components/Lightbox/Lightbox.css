@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 300;
-  background: rgba(5,4,4,0.96);
+  background: rgba(5, 4, 4, 0.96);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,22 +18,27 @@
 
 .lightbox_close {
   position: absolute;
-  top: 28px; right: 32px;
-  width: 44px; height: 44px;
+  top: 28px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(245,240,235,0.10);
+  border: 1px solid rgba(245, 240, 235, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: rgba(245,240,235,0.50);
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  color: rgba(245, 240, 235, 0.5);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
   cursor: pointer;
   background: none;
 }
 .lightbox_close:hover {
   color: #f5f0eb;
-  border-color: rgba(245,240,235,0.3);
+  border-color: rgba(245, 240, 235, 0.3);
 }
 
 .lightbox_zoom-controls {
@@ -44,8 +49,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   padding: 6px 14px;
 }
@@ -53,31 +58,61 @@
 .lightbox_zoom-controls button {
   background: none;
   border: none;
-  color: rgba(245,240,235,0.7);
+  color: rgba(245, 240, 235, 0.7);
   font-size: 1rem;
   cursor: pointer;
   padding: 0 4px;
   line-height: 1;
   transition: color 0.15s;
 }
-.lightbox_zoom-controls button:hover { color: #f5f0eb; }
+.lightbox_zoom-controls button:hover {
+  color: #f5f0eb;
+}
 
 .lightbox_zoom-controls span {
   font-family: monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: rgba(245,240,235,0.5);
+  color: rgba(245, 240, 235, 0.5);
   min-width: 38px;
   text-align: center;
 }
 
-[data-theme="bloom"] .lightbox_close:hover { background: rgba(196,131,106,0.18); border-color: rgba(196,131,106,0.55); color: #f5f0eb; }
-[data-theme="coastal"] .lightbox_close:hover { background: rgba(91,158,181,0.18); border-color: rgba(91,158,181,0.55); color: #f5f0eb; }
-[data-theme="tokyo"] .lightbox_close { border-radius: 0; border-color: rgba(255,77,109,0.20); }
-[data-theme="tokyo"] .lightbox_close:hover { background: rgba(255,77,109,0.15); border-color: rgba(255,77,109,0.60); color: #ff4d6d; box-shadow: 0 0 14px rgba(255,77,109,0.30); }
-[data-theme="film"] .lightbox_close:hover { background: rgba(200,169,110,0.12); border-color: rgba(200,169,110,0.50); color: #c8a96e; }
+[data-theme="bloom"] .lightbox_close:hover {
+  background: rgba(196, 131, 106, 0.18);
+  border-color: rgba(196, 131, 106, 0.55);
+  color: #f5f0eb;
+}
+[data-theme="coastal"] .lightbox_close:hover {
+  background: rgba(91, 158, 181, 0.18);
+  border-color: rgba(91, 158, 181, 0.55);
+  color: #f5f0eb;
+}
+[data-theme="tokyo"] .lightbox_close {
+  border-radius: 0;
+  border-color: rgba(255, 77, 109, 0.2);
+}
+[data-theme="tokyo"] .lightbox_close:hover {
+  background: rgba(255, 77, 109, 0.15);
+  border-color: rgba(255, 77, 109, 0.6);
+  color: #ff4d6d;
+  box-shadow: 0 0 14px rgba(255, 77, 109, 0.3);
+}
+[data-theme="film"] .lightbox_close:hover {
+  background: rgba(200, 169, 110, 0.12);
+  border-color: rgba(200, 169, 110, 0.5);
+  color: #c8a96e;
+}
 
 @media (max-width: 768px) {
-  .lightbox_close { top: 16px; right: 16px; width: 36px; height: 36px; font-size: 15px; }
-  .lightbox_zoom-controls { bottom: 16px; }
+  .lightbox_close {
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+  .lightbox_zoom-controls {
+    bottom: 16px;
+  }
 }

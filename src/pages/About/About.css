@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   ABOUT PAGE
-═══════════════════════════════════════════════════════════════ */
-
 .about {
   min-height: 100dvh;
   background: var(--bg);
@@ -27,7 +23,7 @@
   font-style: var(--font-display-style);
   font-size: clamp(48px, 6vw, 88px);
   font-weight: var(--font-display-weight);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text);
   margin-bottom: 36px;
@@ -47,7 +43,11 @@
   align-items: start;
   margin-bottom: 64px;
 }
-.about_col { display: flex; flex-direction: column; gap: 24px; }
+.about_col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 .about_bio {
   font-size: 16px;
   font-weight: 300;
@@ -63,7 +63,11 @@
   border-left: 1px solid var(--border);
   transition: border-color 0.4s ease;
 }
-.about_stat { display: flex; flex-direction: column; gap: 4px; }
+.about_stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .about_stat-value {
   font-family: var(--font-display);
   font-style: var(--font-display-style);
@@ -77,7 +81,7 @@
 .about_stat-label {
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.20em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-faint);
   transition: color 0.4s ease;
@@ -118,7 +122,11 @@
   margin-bottom: 14px;
   transition: color 0.4s ease;
 }
-.about_gear-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.about_gear-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .about_gear-item {
   padding: 7px 14px;
   border: 1px solid var(--border);
@@ -127,9 +135,11 @@
   letter-spacing: 0.12em;
   color: var(--text-muted);
   border-radius: var(--radius-btn);
-  transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+  transition:
+    color 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
 }
-
 
 .about_bio-empty {
   font-style: italic;
@@ -148,67 +158,106 @@
   margin-top: -1rem;
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    THEME-SPECIFIC OVERRIDES
 ═══════════════════════════════════════════════════════════════ */
 
-[data-theme="noir"]    .about_heading { letter-spacing: -0.03em; font-optical-sizing: auto; }
-[data-theme="bloom"]   .about_heading { letter-spacing: -0.01em; font-optical-sizing: auto; }
-[data-theme="bloom"]   .about_bio     { font-weight: 400; font-size: 16px; line-height: 1.9; }
-[data-theme="coastal"] .about_heading { letter-spacing: -0.04em; line-height: 0.86; }
-[data-theme="coastal"] .about_stat-value { letter-spacing: -0.04em; }
-[data-theme="tokyo"]   .about_heading { letter-spacing: 0.06em; line-height: 0.90; text-transform: uppercase; }
-[data-theme="tokyo"]   .about_bio     { font-weight: 500; letter-spacing: 0.01em; }
-[data-theme="film"]    .about_heading { letter-spacing: 0.10em; line-height: 1.05; text-transform: uppercase; }
-[data-theme="film"]    .about_bio     { font-size: 17px; line-height: 1.85; font-style: italic; }
-[data-theme="film"]    .about_quote   { font-size: 26px; }
+[data-theme="noir"] .about_heading {
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+}
+[data-theme="bloom"] .about_heading {
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+}
+[data-theme="bloom"] .about_bio {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.9;
+}
+[data-theme="coastal"] .about_heading {
+  letter-spacing: -0.04em;
+  line-height: 0.86;
+}
+[data-theme="coastal"] .about_stat-value {
+  letter-spacing: -0.04em;
+}
+[data-theme="tokyo"] .about_heading {
+  letter-spacing: 0.06em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+[data-theme="tokyo"] .about_bio {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+[data-theme="film"] .about_heading {
+  letter-spacing: 0.1em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+[data-theme="film"] .about_bio {
+  font-size: 17px;
+  line-height: 1.85;
+  font-style: italic;
+}
+[data-theme="film"] .about_quote {
+  font-size: 26px;
+}
 
 /* Gear tags per theme */
 [data-theme="bloom"] .about_gear-item:hover {
-  background: rgba(196,131,106,0.08);
-  border-color: rgba(196,131,106,0.40);
+  background: rgba(196, 131, 106, 0.08);
+  border-color: rgba(196, 131, 106, 0.4);
 }
 [data-theme="coastal"] .about_gear-item {
   font-weight: 600;
 }
 [data-theme="coastal"] .about_gear-item:hover {
-  background: rgba(91,158,181,0.10);
-  border-color: rgba(91,158,181,0.40);
+  background: rgba(91, 158, 181, 0.1);
+  border-color: rgba(91, 158, 181, 0.4);
 }
 [data-theme="tokyo"] .about_gear-item {
   letter-spacing: 0.18em;
 }
 [data-theme="tokyo"] .about_gear-item:hover {
-  background: rgba(255,77,109,0.08);
-  border-color: rgba(255,77,109,0.40);
+  background: rgba(255, 77, 109, 0.08);
+  border-color: rgba(255, 77, 109, 0.4);
   color: var(--theme-accent);
 }
 [data-theme="film"] .about_gear-item:hover {
-  background: rgba(200,169,110,0.08);
-  border-color: rgba(200,169,110,0.40);
+  background: rgba(200, 169, 110, 0.08);
+  border-color: rgba(200, 169, 110, 0.4);
   color: var(--theme-accent);
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    TABLET  (max 1024px)
 ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  .about_inner { padding: 60px 40px; }
-  .about_body  { grid-template-columns: 1fr 220px; gap: 40px; }
+  .about_inner {
+    padding: 60px 40px;
+  }
+  .about_body {
+    grid-template-columns: 1fr 220px;
+    gap: 40px;
+  }
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    MOBILE  (max 768px)
 ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  .about_inner  { padding: 40px 24px 60px; }
-  .about_body   { grid-template-columns: 1fr; gap: 36px; }
-  .about_stats  {
+  .about_inner {
+    padding: 40px 24px 60px;
+  }
+  .about_body {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .about_stats {
     flex-direction: row;
     border-left: none;
     border-top: 1px solid var(--border);
@@ -222,9 +271,19 @@
     padding: 0 8px;
     border-right: 1px solid var(--border);
   }
-  .about_stat:last-child { border-right: none; }
-  .about_stat-value { font-size: 36px; }
-  .about_heading { font-size: clamp(36px, 10vw, 56px); }
-  .about_quote   { font-size: 18px; }
-  .about_gear-list { gap: 6px; }
+  .about_stat:last-child {
+    border-right: none;
+  }
+  .about_stat-value {
+    font-size: 36px;
+  }
+  .about_heading {
+    font-size: clamp(36px, 10vw, 56px);
+  }
+  .about_quote {
+    font-size: 18px;
+  }
+  .about_gear-list {
+    gap: 6px;
+  }
 }

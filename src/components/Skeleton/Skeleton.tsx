@@ -1,4 +1,4 @@
-import './Skeleton.css';
+import "./Skeleton.css";
 
 interface SkeletonProps {
   width?: string;
@@ -7,7 +7,12 @@ interface SkeletonProps {
   className?: string;
 }
 
-export function Skeleton({ width = '100%', height = '1rem', radius = '4px', className = '' }: SkeletonProps) {
+export function Skeleton({
+  width = "100%",
+  height = "1rem",
+  radius = "4px",
+  className = "",
+}: SkeletonProps) {
   return (
     <span
       className={`skeleton ${className}`}

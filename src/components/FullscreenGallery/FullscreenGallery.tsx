@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import type { Photo } from '../../data/trips';
-import './FullscreenGallery.css';
+import { useEffect, useRef, useState } from "react";
+import "./FullscreenGallery.css";
+
+import type { Photo } from "../../data/trips";
 
 interface Props {
   photos: Photo[];
@@ -8,36 +9,43 @@ interface Props {
   onClose: () => void;
 }
 
-export default function FullscreenGallery({ photos, initialIndex, onClose }: Props) {
+export default function FullscreenGallery({
+  photos,
+  initialIndex,
+  onClose,
+}: Props) {
   const [index, setIndex] = useState(initialIndex);
-  const [animDir, setAnimDir] = useState<'next' | 'prev' | null>(null);
+  const [animDir, setAnimDir] = useState<"next" | "prev" | null>(null);
   const [animKey, setAnimKey] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const goTo = (newIndex: number, dir: 'next' | 'prev') => {
+  const goTo = (newIndex: number, dir: "next" | "prev") => {
     setAnimDir(dir);
-    setAnimKey(k => k + 1);
+    setAnimKey((k) => k + 1);
     setIndex(newIndex);
   };
 
-  const goNext = () => goTo((index + 1) % photos.length, 'next');
-  const goPrev = () => goTo((index - 1 + photos.length) % photos.length, 'prev');
+  const goNext = () => goTo((index + 1) % photos.length, "next");
+  const goPrev = () =>
+    goTo((index - 1 + photos.length) % photos.length, "prev");
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') goNext();
-      else if (e.key === 'ArrowLeft') goPrev();
-      else if (e.key === 'Escape') onClose();
+      if (e.key === "ArrowRight") goNext();
+      else if (e.key === "ArrowLeft") goPrev();
+      else if (e.key === "Escape") onClose();
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [index]);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     overlayRef.current?.focus();
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -54,7 +62,7 @@ export default function FullscreenGallery({ photos, initialIndex, onClose }: Pro
   };
 
   const photo = photos[index];
-  const animClass = animDir ? ` fsg-img--${animDir}` : '';
+  const animClass = animDir ? ` fsg-img--${animDir}` : "";
 
   return (
     <div
@@ -67,7 +75,13 @@ export default function FullscreenGallery({ photos, initialIndex, onClose }: Pro
       role="dialog"
       aria-label="Fullscreen gallery"
     >
-      <button className="fsg-close" onClick={onClose} aria-label="Close gallery">✕</button>
+      <button
+        className="fsg-close"
+        onClick={onClose}
+        aria-label="Close gallery"
+      >
+        ✕
+      </button>
 
       <div className="fsg-stage">
         <img
@@ -97,7 +111,8 @@ export default function FullscreenGallery({ photos, initialIndex, onClose }: Pro
       <div className="fsg-footer">
         <span className="fsg-caption">{photo.caption}</span>
         <span className="fsg-counter">
-          {String(index + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}
+          {String(index + 1).padStart(2, "0")} /{" "}
+          {String(photos.length).padStart(2, "0")}
         </span>
       </div>
 
@@ -105,8 +120,8 @@ export default function FullscreenGallery({ photos, initialIndex, onClose }: Pro
         {photos.map((p, i) => (
           <button
             key={i}
-            className={`fsg-thumb${i === index ? ' fsg-thumb--active' : ''}`}
-            onClick={() => goTo(i, i > index ? 'next' : 'prev')}
+            className={`fsg-thumb${i === index ? " fsg-thumb--active" : ""}`}
+            onClick={() => goTo(i, i > index ? "next" : "prev")}
             aria-label={p.caption}
           >
             <img src={p.url} alt={p.caption} loading="lazy" />

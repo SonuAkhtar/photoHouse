@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   HOME SCROLL CONTAINER
-═══════════════════════════════════════════════════════════════ */
-
 .home {
   height: calc(100dvh - var(--nav-h));
   margin-top: var(--nav-h);
@@ -9,9 +5,11 @@
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
 }
-.home::-webkit-scrollbar { display: none; }
+.home::-webkit-scrollbar {
+  display: none;
+}
 
-/* ── Empty state ── */
+/* ----- Empty state ----- */
 .home-empty {
   height: calc(100dvh - var(--nav-h));
   scroll-snap-align: start;
@@ -65,9 +63,11 @@
   cursor: pointer;
   transition: opacity 0.2s;
 }
-.home-empty_cta:hover { opacity: 0.8; }
+.home-empty_cta:hover {
+  opacity: 0.8;
+}
 
-/* ── Loading spinner ── */
+/* ----- Loading spinner ----- */
 .home-loading {
   min-height: 60dvh;
   display: flex;

@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import type { ApiTrip } from '../../services/api';
-import './Footer.css';
+import { Link } from "react-router-dom";
+import "./Footer.css";
+
+import { motion } from "framer-motion";
+import type { ApiTrip } from "../../services/api";
 
 interface Props {
   trips?: ApiTrip[];
@@ -10,16 +11,17 @@ interface Props {
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 function getMarqueeText(trips: ApiTrip[]) {
-  if (trips.length === 0) return 'Your journeys will appear here  ·  ';
-  return trips.map(t => t.place).join('  ·  ') + '  ·  ';
+  if (trips.length === 0) return "Your journeys will appear here  ·  ";
+  return trips.map((t) => t.place).join("  ·  ") + "  ·  ";
 }
 
 function getTripMeta(trip: ApiTrip) {
   // dates: "June 14 – 21, 2024"  →  "June 14"
   const datePart = trip.dates.split(/[–-]/)[0].trim();
   // region: "Cyclades · Greece"  →  "Greece"
-  const regionParts = trip.region.split(' · ');
-  const country = regionParts.length > 1 ? regionParts[regionParts.length - 1] : trip.region;
+  const regionParts = trip.region.split(" · ");
+  const country =
+    regionParts.length > 1 ? regionParts[regionParts.length - 1] : trip.region;
   return `${datePart} · ${country}`;
 }
 
@@ -28,7 +30,6 @@ export default function Footer({ trips = [] }: Props) {
 
   return (
     <footer className="page-footer">
-
       <div className="page-footer_marquee" aria-hidden="true">
         <div className="page-footer_marquee-track">
           <span>{marqueeText}</span>
@@ -37,7 +38,6 @@ export default function Footer({ trips = [] }: Props) {
       </div>
 
       <div className="page-footer_grid">
-
         <motion.div
           className="page-footer_brand"
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,9 @@ export default function Footer({ trips = [] }: Props) {
         >
           <p className="page-footer_initials">PH</p>
           <p className="page-footer_tagline">
-            A visual archive of<br />distant places.
+            A visual archive of
+            <br />
+            distant places.
           </p>
           <a
             href="https://www.instagram.com"
@@ -63,7 +65,7 @@ export default function Footer({ trips = [] }: Props) {
 
         <div className="page-footer_index">
           <p className="page-footer_index-label">
-            Journeys{trips.length > 0 ? ` — ${trips.length}` : ''}
+            Journeys{trips.length > 0 ? ` — ${trips.length}` : ""}
           </p>
 
           {trips.length === 0 ? (
@@ -82,10 +84,12 @@ export default function Footer({ trips = [] }: Props) {
               >
                 <Link to={`/trip/${trip.id}`} className="page-footer_trip-link">
                   <span className="page-footer_trip-index">
-                    {String(i + 1).padStart(2, '0')}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="page-footer_trip-place">{trip.place}</span>
-                  <span className="page-footer_trip-meta">{getTripMeta(trip)}</span>
+                  <span className="page-footer_trip-meta">
+                    {getTripMeta(trip)}
+                  </span>
                   <span className="page-footer_trip-arrow">→</span>
                 </Link>
               </motion.div>
@@ -102,30 +106,42 @@ export default function Footer({ trips = [] }: Props) {
         >
           <p className="page-footer_side-label">Navigation</p>
           {[
-            { label: 'Journeys',  href: '/' },
-            { label: 'About Me',  href: '/about' },
-            { label: 'Interests', href: '/interests' },
-          ].map(link => (
-            <Link key={link.href} to={link.href} className="page-footer_nav-link">
+            { label: "Journeys", href: "/" },
+            { label: "About Me", href: "/about" },
+            { label: "Interests", href: "/interests" },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="page-footer_nav-link"
+            >
               {link.label}
             </Link>
           ))}
         </motion.div>
-
       </div>
 
       <div className="page-footer_bar">
-        <span className="page-footer_copy">Photo House © {new Date().getFullYear()}</span>
+        <span className="page-footer_copy">
+          Photo House © {new Date().getFullYear()}
+        </span>
         <span className="page-footer_copy">All photographs by the author</span>
       </div>
-
     </footer>
   );
 }
 
 function InstagramIcon() {
   return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      aria-hidden="true"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5.5" />
       <circle cx="12" cy="12" r="4.5" />
       <circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none" />

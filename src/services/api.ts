@@ -1,43 +1,46 @@
-import axios from 'axios';
+import axios from "axios";
 
-const api = axios.create({ baseURL: '/api' });
+const api = axios.create({ baseURL: "/api" });
 
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem('ph-token');
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("ph-token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
 export const registerUser = (name: string, email: string, password: string) =>
-  api.post<{ token: string; user: { id: string; name: string; email: string } }>(
-    '/auth/register',
-    { name, email, password }
-  );
+  api.post<{
+    token: string;
+    user: { id: string; name: string; email: string };
+  }>("/auth/register", { name, email, password });
 
 export const loginUser = (email: string, password: string) =>
-  api.post<{ token: string; user: { id: string; name: string; email: string } }>(
-    '/auth/login',
-    { email, password }
-  );
+  api.post<{
+    token: string;
+    user: { id: string; name: string; email: string };
+  }>("/auth/login", { email, password });
 
-export const fetchTrips = () => api.get<ApiTrip[]>('/trips');
-export const fetchTrip  = (id: string) => api.get<ApiTrip>(`/trips/${id}`);
+export const fetchTrips = () => api.get<ApiTrip[]>("/trips");
+export const fetchTrip = (id: string) => api.get<ApiTrip>(`/trips/${id}`);
 
 export const createTrip = (formData: FormData) =>
-  api.post<ApiTrip>('/trips', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+  api.post<ApiTrip>("/trips", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
   });
 
 export const updateTrip = (
   id: string,
-  data: Partial<Pick<ApiTrip, 'place' | 'region' | 'dates' | 'summary' | 'accent' | 'tags'>>
+  data: Partial<
+    Pick<ApiTrip, "place" | "region" | "dates" | "summary" | "accent" | "tags">
+  >,
 ) => api.put<ApiTrip>(`/trips/${id}`, data);
 
 export const deleteTrip = (id: string) =>
   api.delete<{ message: string }>(`/trips/${id}`);
 
-export const fetchProfile = () => api.get<ApiProfile>('/profile');
-export const saveProfile  = (data: Partial<ApiProfile>) => api.put<ApiProfile>('/profile', data);
+export const fetchProfile = () => api.get<ApiProfile>("/profile");
+export const saveProfile = (data: Partial<ApiProfile>) =>
+  api.put<ApiProfile>("/profile", data);
 
 export const fetchPublicProfile = (username: string) =>
   api.get<PublicProfileResponse>(`/public/${username}`);

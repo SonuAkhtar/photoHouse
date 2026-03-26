@@ -1,8 +1,9 @@
-import { forwardRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import type { Trip } from '../../data/trips';
-import './TripCard.css';
+import { forwardRef } from "react";
+import { useNavigate } from "react-router-dom";
+import "./TripCard.css";
+
+import { motion } from "framer-motion";
+import type { Trip } from "../../data/trips";
 
 interface TripCardProps {
   trip: Trip;
@@ -26,7 +27,7 @@ const TripCard = forwardRef<HTMLElement, TripCardProps>(({ trip }, ref) => {
     <section
       ref={ref}
       className="trip-card"
-      style={{ ['--accent' as string]: trip.accent }}
+      style={{ ["--accent" as string]: trip.accent }}
     >
       <div
         className="trip-card_bg"
@@ -125,13 +126,21 @@ const TripCard = forwardRef<HTMLElement, TripCardProps>(({ trip }, ref) => {
   );
 });
 
-TripCard.displayName = 'TripCard';
+TripCard.displayName = "TripCard";
 
 export default TripCard;
 
 function InstagramIcon() {
   return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      aria-hidden="true"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5.5" />
       <circle cx="12" cy="12" r="4.5" />
       <circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none" />

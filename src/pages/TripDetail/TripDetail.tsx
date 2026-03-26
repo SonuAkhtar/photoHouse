@@ -1,31 +1,35 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import Carousel from '../../components/Carousel/Carousel';
-import EditTripModal from '../../components/EditTripModal/EditTripModal';
-import { fetchTrip, deleteTrip, type ApiTrip } from '../../services/api';
-import { useToast } from '../../context/ToastContext';
-import './TripDetail.css';
+import { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import "./TripDetail.css";
+
+import { motion, AnimatePresence } from "framer-motion";
+import Carousel from "../../components/Carousel/Carousel";
+import EditTripModal from "../../components/EditTripModal/EditTripModal";
+import { fetchTrip, deleteTrip, type ApiTrip } from "../../services/api";
+import { useToast } from "../../context/ToastContext";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function TripDetail() {
-  const { id }    = useParams<{ id: string }>();
-  const navigate  = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const { toast } = useToast();
 
-  const [trip, setTrip]                   = useState<ApiTrip | null>(null);
-  const [loading, setLoading]             = useState(true);
-  const [deleting, setDeleting]           = useState(false);
+  const [trip, setTrip] = useState<ApiTrip | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [deleting, setDeleting] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
-  const [editOpen, setEditOpen]           = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   useEffect(() => {
-    if (!id) { navigate('/'); return; }
+    if (!id) {
+      navigate("/");
+      return;
+    }
     window.scrollTo(0, 0);
     fetchTrip(id)
       .then(({ data }) => setTrip(data))
-      .catch(() => navigate('/'))
+      .catch(() => navigate("/"))
       .finally(() => setLoading(false));
   }, [id, navigate]);
 
@@ -34,23 +38,27 @@ export default function TripDetail() {
     setDeleting(true);
     try {
       await deleteTrip(trip.id);
-      toast.success('Memory deleted.');
-      navigate('/trips');
+      toast.success("Memory deleted.");
+      navigate("/trips");
     } catch {
-      toast.error('Failed to delete. Please try again.');
+      toast.error("Failed to delete. Please try again.");
       setDeleting(false);
       setConfirmDelete(false);
     }
   };
 
   if (loading) {
-    return <div className="detail-loading"><span className="auth-loading-spinner" /></div>;
+    return (
+      <div className="detail-loading">
+        <span className="auth-loading-spinner" />
+      </div>
+    );
   }
 
   if (!trip) return null;
 
   return (
-    <div className="detail" style={{ ['--accent' as string]: trip.accent }}>
+    <div className="detail" style={{ ["--accent" as string]: trip.accent }}>
       <header className="detail_header">
         <Link to="/trips" className="detail_back">
           <span className="detail_back-arrow">←</span>
@@ -88,37 +96,71 @@ export default function TripDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15, ease }}
             >
-              {trip.tags.map(tag => (
-                <span key={tag} className="detail_tag">{tag}</span>
+              {trip.tags.map((tag) => (
+                <span key={tag} className="detail_tag">
+                  {tag}
+                </span>
               ))}
             </motion.div>
           )}
 
           <div className="detail_actions-row">
-            <button className="detail_edit-btn" onClick={() => setEditOpen(true)} aria-label="Edit this trip">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            <button
+              className="detail_edit-btn"
+              onClick={() => setEditOpen(true)}
+              aria-label="Edit this trip"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                aria-hidden="true"
+              >
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
               </svg>
               Edit
             </button>
             {confirmDelete ? (
               <div className="detail_delete-confirm">
                 <span className="detail_delete-confirm-text">Delete?</span>
-                <button className="detail_delete-yes" onClick={handleDelete} disabled={deleting}>
-                  {deleting ? '…' : 'Yes'}
+                <button
+                  className="detail_delete-yes"
+                  onClick={handleDelete}
+                  disabled={deleting}
+                >
+                  {deleting ? "…" : "Yes"}
                 </button>
-                <button className="detail_delete-no" onClick={() => setConfirmDelete(false)} disabled={deleting}>
+                <button
+                  className="detail_delete-no"
+                  onClick={() => setConfirmDelete(false)}
+                  disabled={deleting}
+                >
                   No
                 </button>
               </div>
             ) : (
-              <button className="detail_delete-btn" onClick={() => setConfirmDelete(true)} aria-label="Delete this trip">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                  <polyline points="3 6 5 6 21 6"/>
-                  <path d="M19 6l-1 14H6L5 6"/>
-                  <path d="M10 11v6M14 11v6"/>
-                  <path d="M9 6V4h6v2"/>
+              <button
+                className="detail_delete-btn"
+                onClick={() => setConfirmDelete(true)}
+                aria-label="Delete this trip"
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14H6L5 6" />
+                  <path d="M10 11v6M14 11v6" />
+                  <path d="M9 6V4h6v2" />
                 </svg>
                 Delete
               </button>
@@ -141,7 +183,10 @@ export default function TripDetail() {
           <EditTripModal
             trip={trip}
             onClose={() => setEditOpen(false)}
-            onUpdated={updated => { setTrip(updated); setEditOpen(false); }}
+            onUpdated={(updated) => {
+              setTrip(updated);
+              setEditOpen(false);
+            }}
           />
         )}
       </AnimatePresence>

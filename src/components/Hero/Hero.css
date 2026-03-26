@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   HERO — cinematic editorial  (GSAP-powered)
-═══════════════════════════════════════════════════════════════ */
-
 .hero {
   position: relative;
   height: calc(100dvh - var(--nav-h));
@@ -16,7 +12,7 @@
   --cy: 42%;
 }
 
-/* ── Grain texture ── */
+/* ----- Grain texture ----- */
 .hero__grain {
   position: absolute;
   inset: 0;
@@ -28,7 +24,7 @@
   background-size: 200px 200px;
 }
 
-/* ── Ambient glow (theme-driven) ── */
+/* ----- Ambient glow (theme-driven) ----- */
 .hero__glow {
   position: absolute;
   inset: 0;
@@ -42,7 +38,7 @@
   z-index: 0;
 }
 
-/* ── Interactive cursor spotlight ── */
+/* ----- Interactive cursor spotlight ----- */
 .hero__spotlight {
   position: absolute;
   inset: 0;
@@ -61,7 +57,7 @@
   opacity: 1;
 }
 
-/* ── Top bar ── */
+/* ----- Top bar ----- */
 .hero__topbar {
   position: absolute;
   top: 40px;
@@ -83,7 +79,7 @@
   transition: color 0.4s ease;
 }
 
-/* ── Body (main content row) ── */
+/* ----- Body (main content row) ----- */
 .hero__body {
   flex: 1;
   display: flex;
@@ -95,7 +91,7 @@
   margin-top: 20px;
 }
 
-/* ── Text column ── */
+/* ----- Text column ----- */
 .hero__text-col {
   display: flex;
   flex-direction: column;
@@ -103,7 +99,7 @@
   max-width: 56%;
 }
 
-/* ── Wordmark ── */
+/* ----- Wordmark ----- */
 .hero__wordmark {
   display: flex;
   flex-direction: column;
@@ -128,7 +124,7 @@
   will-change: transform;
 }
 
-/* ── Subtitle block ── */
+/* ----- Subtitle block ----- */
 .hero__sub {
   display: flex;
   align-items: flex-start;
@@ -155,7 +151,7 @@
   transition: color 0.4s ease;
 }
 
-/* ── Journey count ── */
+/* ----- Journey count ----- */
 .hero__count {
   display: flex;
   align-items: baseline;
@@ -185,7 +181,7 @@
   transition: color 0.4s ease;
 }
 
-/* ── Photo collage ── */
+/* ----- Photo collage ----- */
 .hero__collage {
   position: relative;
   width: 380px;
@@ -283,7 +279,7 @@
   right: 28px;
 }
 
-/* ── Scroll indicator ── */
+/* ----- Scroll indicator ----- */
 .hero__scroll {
   position: absolute;
   bottom: 56px;
@@ -325,7 +321,7 @@
   color: var(--text-faint);
 }
 
-/* ── Marquee strip ── */
+/* ----- Marquee strip ----- */
 .hero__marquee-wrap {
   position: absolute;
   bottom: 0;

@@ -1,6 +1,7 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { useToast } from '../../context/ToastContext';
-import './Toast.css';
+import "./Toast.css";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useToast } from "../../context/ToastContext";
 
 export default function ToastStack() {
   const { toasts, dismiss } = useToast();
@@ -8,7 +9,7 @@ export default function ToastStack() {
   return (
     <div className="toast-stack" aria-live="polite" aria-atomic="false">
       <AnimatePresence initial={false}>
-        {toasts.map(t => (
+        {toasts.map((t) => (
           <motion.div
             key={t.id}
             className={`toast toast--${t.type}`}
@@ -19,7 +20,7 @@ export default function ToastStack() {
             layout
           >
             <span className="toast_icon" aria-hidden="true">
-              {t.type === 'success' ? '✓' : t.type === 'error' ? '✕' : 'ℹ'}
+              {t.type === "success" ? "✓" : t.type === "error" ? "✕" : "ℹ"}
             </span>
             <span className="toast_msg">{t.message}</span>
             <button

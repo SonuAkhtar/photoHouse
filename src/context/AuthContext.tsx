@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 export interface AuthUser {
   id: string;
@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthCtx>({
 
 function loadUser(): AuthUser | null {
   try {
-    const raw = localStorage.getItem('ph-user');
+    const raw = localStorage.getItem("ph-user");
     return raw ? (JSON.parse(raw) as AuthUser) : null;
   } catch {
     return null;
@@ -30,23 +30,23 @@ function loadUser(): AuthUser | null {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [token, setToken] = useState<string | null>(
-    () => localStorage.getItem('ph-token')
+  const [token, setToken] = useState<string | null>(() =>
+    localStorage.getItem("ph-token"),
   );
   const [user, setUser] = useState<AuthUser | null>(loadUser);
 
   const login = (newToken: string, newUser: AuthUser) => {
     setToken(newToken);
     setUser(newUser);
-    localStorage.setItem('ph-token', newToken);
-    localStorage.setItem('ph-user', JSON.stringify(newUser));
+    localStorage.setItem("ph-token", newToken);
+    localStorage.setItem("ph-user", JSON.stringify(newUser));
   };
 
   const logout = () => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem('ph-token');
-    localStorage.removeItem('ph-user');
+    localStorage.removeItem("ph-token");
+    localStorage.removeItem("ph-user");
   };
 
   return (

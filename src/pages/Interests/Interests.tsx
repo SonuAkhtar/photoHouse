@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { fetchProfile, type ApiInterest } from '../../services/api';
-import './Interests.css';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Interests.css";
+
+import { motion } from "framer-motion";
+import { fetchProfile, type ApiInterest } from "../../services/api";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function Interests() {
   const [interests, setInterests] = useState<ApiInterest[]>([]);
-  const [loading, setLoading]     = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchProfile()
@@ -51,9 +52,12 @@ export default function Interests() {
           >
             <p>No interests added yet.</p>
             <p>
-              Go to your{' '}
-              <Link to="/profile" className="interests_profile-link">profile page</Link>
-              {' '}to add your areas of interest — they'll appear here in the same card format.
+              Go to your{" "}
+              <Link to="/profile" className="interests_profile-link">
+                profile page
+              </Link>{" "}
+              to add your areas of interest — they'll appear here in the same
+              card format.
             </p>
           </motion.div>
         ) : (
@@ -67,7 +71,7 @@ export default function Interests() {
                 transition={{ duration: 0.7, delay: 0.3 + i * 0.08, ease }}
               >
                 <span className="interests_card-index">
-                  {String(i + 1).padStart(2, '0')}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
                 <h2 className="interests_card-title">{item.title}</h2>
                 {item.body && (

@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   ALL TRIPS PAGE
-═══════════════════════════════════════════════════════════════ */
-
 .all-trips {
   min-height: 100dvh;
   background: var(--bg);
@@ -30,7 +26,7 @@
   padding: 64px 64px 80px;
 }
 
-/* ── Page header ── */
+/* ----- Page header ----- */
 .all-trips_head {
   display: flex;
   align-items: flex-end;
@@ -53,7 +49,7 @@
   font-style: var(--font-display-style);
   font-size: clamp(40px, 5vw, 72px);
   font-weight: var(--font-display-weight);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text);
   transition: color 0.4s ease;
@@ -104,9 +100,15 @@
   transition: border-color 0.2s;
   box-sizing: border-box;
 }
-.all-trips_search::placeholder { color: var(--text-faint); }
-.all-trips_search:focus { border-color: var(--theme-accent); }
-.all-trips_search::-webkit-search-cancel-button { display: none; }
+.all-trips_search::placeholder {
+  color: var(--text-faint);
+}
+.all-trips_search:focus {
+  border-color: var(--theme-accent);
+}
+.all-trips_search::-webkit-search-cancel-button {
+  display: none;
+}
 
 .all-trips_search-clear {
   position: absolute;
@@ -119,7 +121,9 @@
   padding: 4px;
   transition: color 0.15s;
 }
-.all-trips_search-clear:hover { color: var(--text); }
+.all-trips_search-clear:hover {
+  color: var(--text);
+}
 
 .all-trips_tags {
   display: flex;
@@ -137,9 +141,15 @@
   letter-spacing: 0.1em;
   color: var(--text-muted);
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
 }
-.all-trips_tag:hover { border-color: var(--theme-accent); color: var(--text); }
+.all-trips_tag:hover {
+  border-color: var(--theme-accent);
+  color: var(--text);
+}
 .all-trips_tag-active {
   background: var(--text);
   color: var(--bg);
@@ -155,7 +165,9 @@
   letter-spacing: 0.08em;
   color: var(--theme-accent);
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
   white-space: nowrap;
 }
 .all-trips_clear-btn:hover {
@@ -173,7 +185,7 @@
 .trip-grid-card_tag {
   display: inline-flex;
   padding: 2px 8px;
-  background: rgba(128,128,128,0.08);
+  background: rgba(128, 128, 128, 0.08);
   border: 1px solid var(--border);
   border-radius: 999px;
   font-family: var(--font-mono);
@@ -189,7 +201,6 @@
   margin-bottom: 48px;
   transition: background-color 0.4s ease;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    TRIP GRID CARDS
@@ -209,7 +220,9 @@
   overflow: hidden;
   transition: border-color var(--speed-fast) var(--ease);
 }
-.trip-grid-card:hover { border-color: var(--border-hover); }
+.trip-grid-card:hover {
+  border-color: var(--border-hover);
+}
 
 .trip-grid-card_link {
   display: grid;
@@ -218,7 +231,7 @@
   min-height: 200px;
 }
 
-/* ── Cover image pane ── */
+/* ----- Cover image pane ----- */
 .trip-grid-card_img-wrap {
   position: relative;
   overflow: hidden;
@@ -231,19 +244,23 @@
   display: block;
   transition: transform var(--speed) var(--ease);
 }
-.trip-grid-card:hover .trip-grid-card_img { transform: scale(1.05); }
+.trip-grid-card:hover .trip-grid-card_img {
+  transform: scale(1.05);
+}
 
 .trip-grid-card_overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0,0,0,0.30) 0%,
-    rgba(0,0,0,0.05) 100%
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.05) 100%
   );
   transition: opacity var(--speed) var(--ease);
 }
-.trip-grid-card:hover .trip-grid-card_overlay { opacity: 0.5; }
+.trip-grid-card:hover .trip-grid-card_overlay {
+  opacity: 0.5;
+}
 
 .trip-grid-card_index {
   position: absolute;
@@ -252,10 +269,10 @@
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
-  color: rgba(245,240,235,0.60);
+  color: rgba(245, 240, 235, 0.6);
 }
 
-/* ── Text pane ── */
+/* ----- Text pane ----- */
 .trip-grid-card_body {
   padding: 28px 32px;
   display: flex;
@@ -281,7 +298,7 @@
 .trip-grid-card_region {
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.20em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-faint);
   transition: color 0.4s ease;
@@ -292,10 +309,12 @@
   font-style: var(--font-display-style);
   font-size: clamp(22px, 2.2vw, 30px);
   font-weight: var(--font-display-weight);
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.01em;
   color: var(--text);
-  transition: color 0.4s ease, transform var(--speed-fast) var(--ease);
+  transition:
+    color 0.4s ease,
+    transform var(--speed-fast) var(--ease);
 }
 .trip-grid-card:hover .trip-grid-card_place {
   transform: translateX(4px);
@@ -332,7 +351,9 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-faint);
-  transition: color var(--speed-fast) var(--ease), gap var(--speed-fast) var(--ease);
+  transition:
+    color var(--speed-fast) var(--ease),
+    gap var(--speed-fast) var(--ease);
 }
 .trip-grid-card:hover .trip-grid-card_cta {
   color: var(--text);
@@ -346,24 +367,48 @@
   transform: translateX(4px);
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    THEME-SPECIFIC OVERRIDES
 ═══════════════════════════════════════════════════════════════ */
 
-[data-theme="noir"] .all-trips_heading    { letter-spacing: -0.03em; font-optical-sizing: auto; }
-[data-theme="bloom"] .all-trips_heading   { letter-spacing: -0.01em; font-optical-sizing: auto; }
-[data-theme="coastal"] .all-trips_heading { letter-spacing: -0.04em; }
-[data-theme="tokyo"] .all-trips_heading   { letter-spacing: 0.06em; text-transform: uppercase; }
-[data-theme="film"] .all-trips_heading    { letter-spacing: 0.10em; text-transform: uppercase; }
+[data-theme="noir"] .all-trips_heading {
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+}
+[data-theme="bloom"] .all-trips_heading {
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+}
+[data-theme="coastal"] .all-trips_heading {
+  letter-spacing: -0.04em;
+}
+[data-theme="tokyo"] .all-trips_heading {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+[data-theme="film"] .all-trips_heading {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
 
-[data-theme="tokyo"] .trip-grid-card_place { letter-spacing: 0.04em; text-transform: uppercase; }
-[data-theme="film"]  .trip-grid-card_place { letter-spacing: 0.08em; text-transform: uppercase; }
+[data-theme="tokyo"] .trip-grid-card_place {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+[data-theme="film"] .trip-grid-card_place {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-[data-theme="bloom"] .trip-grid-card_summary  { font-weight: 400; }
-[data-theme="tokyo"] .trip-grid-card_summary  { font-weight: 500; }
-[data-theme="film"]  .trip-grid-card_summary  { font-style: italic; }
-
+[data-theme="bloom"] .trip-grid-card_summary {
+  font-weight: 400;
+}
+[data-theme="tokyo"] .trip-grid-card_summary {
+  font-weight: 500;
+}
+[data-theme="film"] .trip-grid-card_summary {
+  font-style: italic;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    BLOOM — 3-column grid, image-top cards, soft + rounded
@@ -376,11 +421,11 @@
 
 [data-theme="bloom"] .trip-grid-card {
   border-radius: 18px;
-  border-color: rgba(196,131,106,0.18);
+  border-color: rgba(196, 131, 106, 0.18);
 }
 [data-theme="bloom"] .trip-grid-card:hover {
-  border-color: rgba(196,131,106,0.45);
-  box-shadow: 0 8px 32px rgba(196,131,106,0.12);
+  border-color: rgba(196, 131, 106, 0.45);
+  box-shadow: 0 8px 32px rgba(196, 131, 106, 0.12);
 }
 
 [data-theme="bloom"] .trip-grid-card_link {
@@ -407,12 +452,11 @@
 }
 
 [data-theme="bloom"] .trip-grid-card_cta {
-  color: rgba(196,131,106,0.70);
+  color: rgba(196, 131, 106, 0.7);
 }
 [data-theme="bloom"] .trip-grid-card:hover .trip-grid-card_cta {
   color: #c4836a;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    COASTAL — single-column list, image RIGHT, generous whitespace
@@ -426,12 +470,12 @@
 [data-theme="coastal"] .trip-grid-card {
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid rgba(91,158,181,0.15);
+  border-bottom: 1px solid rgba(91, 158, 181, 0.15);
   background: transparent;
 }
 [data-theme="coastal"] .trip-grid-card:hover {
-  border-color: rgba(91,158,181,0.15);
-  background: rgba(91,158,181,0.04);
+  border-color: rgba(91, 158, 181, 0.15);
+  background: rgba(91, 158, 181, 0.04);
 }
 
 [data-theme="coastal"] .trip-grid-card_link {
@@ -462,16 +506,15 @@
 [data-theme="coastal"] .trip-grid-card_summary {
   -webkit-line-clamp: 3;
   font-size: 14px;
-  line-height: 1.80;
+  line-height: 1.8;
 }
 
 [data-theme="coastal"] .trip-grid-card_cta {
-  color: rgba(91,158,181,0.70);
+  color: rgba(91, 158, 181, 0.7);
 }
 [data-theme="coastal"] .trip-grid-card:hover .trip-grid-card_cta {
   color: #5b9eb5;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    TOKYO — 4-column grid, portrait cards, full-bleed + text overlay
@@ -488,8 +531,8 @@
   overflow: hidden;
 }
 [data-theme="tokyo"] .trip-grid-card:hover {
-  border-color: rgba(255,77,109,0.40);
-  box-shadow: 0 0 20px rgba(255,77,109,0.18);
+  border-color: rgba(255, 77, 109, 0.4);
+  box-shadow: 0 0 20px rgba(255, 77, 109, 0.18);
 }
 
 [data-theme="tokyo"] .trip-grid-card_link {
@@ -508,7 +551,12 @@
 }
 
 [data-theme="tokyo"] .trip-grid-card_overlay {
-  background: linear-gradient(to top, rgba(4,4,8,0.88) 0%, rgba(4,4,8,0.10) 55%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(4, 4, 8, 0.88) 0%,
+    rgba(4, 4, 8, 0.1) 55%,
+    transparent 100%
+  );
 }
 [data-theme="tokyo"] .trip-grid-card:hover .trip-grid-card_overlay {
   opacity: 1;
@@ -526,10 +574,12 @@
   z-index: 2;
 }
 
-[data-theme="tokyo"] .trip-grid-card_meta { margin-bottom: 2px; }
+[data-theme="tokyo"] .trip-grid-card_meta {
+  margin-bottom: 2px;
+}
 
 [data-theme="tokyo"] .trip-grid-card_region {
-  color: rgba(245,240,235,0.50);
+  color: rgba(245, 240, 235, 0.5);
 }
 
 [data-theme="tokyo"] .trip-grid-card_place {
@@ -544,7 +594,7 @@
 }
 
 [data-theme="tokyo"] .trip-grid-card_dates {
-  color: rgba(245,240,235,0.45);
+  color: rgba(245, 240, 235, 0.45);
   font-size: 9.5px;
 }
 
@@ -559,9 +609,8 @@
 
 [data-theme="tokyo"] .trip-grid-card_index {
   font-size: 9px;
-  color: rgba(245,240,235,0.35);
+  color: rgba(245, 240, 235, 0.35);
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    FILM — 2-col magazine grid, image-top, no border, editorial type
@@ -575,15 +624,15 @@
 [data-theme="film"] .trip-grid-card {
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid rgba(200,169,110,0.12);
+  border-bottom: 1px solid rgba(200, 169, 110, 0.12);
   background: transparent;
 }
 [data-theme="film"] .trip-grid-card:nth-child(odd) {
-  border-right: 1px solid rgba(200,169,110,0.12);
+  border-right: 1px solid rgba(200, 169, 110, 0.12);
 }
 [data-theme="film"] .trip-grid-card:hover {
-  border-color: rgba(200,169,110,0.12);
-  background: rgba(200,169,110,0.03);
+  border-color: rgba(200, 169, 110, 0.12);
+  background: rgba(200, 169, 110, 0.03);
 }
 
 [data-theme="film"] .trip-grid-card_link {
@@ -628,13 +677,12 @@
 }
 
 [data-theme="film"] .trip-grid-card_cta {
-  color: rgba(200,169,110,0.60);
+  color: rgba(200, 169, 110, 0.6);
   letter-spacing: 0.22em;
 }
 [data-theme="film"] .trip-grid-card:hover .trip-grid-card_cta {
   color: #c8a96e;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    PAGINATION
@@ -656,11 +704,15 @@
   padding: 0 10px;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
   border: 1px solid transparent;
   border-radius: var(--radius-btn);
-  transition: color var(--speed-fast) var(--ease), border-color var(--speed-fast) var(--ease), background var(--speed-fast) var(--ease), box-shadow var(--speed-fast) var(--ease);
+  transition:
+    color var(--speed-fast) var(--ease),
+    border-color var(--speed-fast) var(--ease),
+    background var(--speed-fast) var(--ease),
+    box-shadow var(--speed-fast) var(--ease);
 }
 .all-trips_page-btn:hover:not(:disabled) {
   color: var(--text);
@@ -669,7 +721,7 @@
 .all-trips_page-btn-active {
   color: var(--text);
   border-color: var(--border-hover);
-  background: rgba(128,128,128,0.08);
+  background: rgba(128, 128, 128, 0.08);
 }
 .all-trips_page-btn-nav {
   font-size: 16px;
@@ -685,23 +737,23 @@
 [data-theme="tokyo"] .all-trips_page-btn-active {
   border-color: var(--theme-accent);
   color: var(--theme-accent);
-  box-shadow: 0 0 12px rgba(255,77,109,0.25);
+  box-shadow: 0 0 12px rgba(255, 77, 109, 0.25);
 }
 [data-theme="tokyo"] .all-trips_page-btn:hover:not(:disabled) {
-  border-color: rgba(255,77,109,0.40);
+  border-color: rgba(255, 77, 109, 0.4);
   color: var(--theme-accent);
 }
 
 /* Bloom — warm */
 [data-theme="bloom"] .all-trips_page-btn-active {
-  border-color: rgba(196,131,106,0.55);
-  background: rgba(196,131,106,0.08);
+  border-color: rgba(196, 131, 106, 0.55);
+  background: rgba(196, 131, 106, 0.08);
 }
 
 /* Film — gold */
 [data-theme="film"] .all-trips_page-btn-active {
-  border-color: rgba(200,169,110,0.55);
-  background: rgba(200,169,110,0.08);
+  border-color: rgba(200, 169, 110, 0.55);
+  background: rgba(200, 169, 110, 0.08);
 }
 
 /* Coastal — pill */
@@ -709,45 +761,70 @@
   font-weight: 600;
 }
 [data-theme="coastal"] .all-trips_page-btn-active {
-  background: rgba(91,158,181,0.12);
-  border-color: rgba(91,158,181,0.50);
+  background: rgba(91, 158, 181, 0.12);
+  border-color: rgba(91, 158, 181, 0.5);
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    TABLET  (max 1024px)
 ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  .all-trips_inner { padding: 48px 40px 64px; }
-  .trip-grid-card_link { grid-template-columns: 220px 1fr; }
-  .trip-grid-card_body { padding: 22px 24px; }
+  .all-trips_inner {
+    padding: 48px 40px 64px;
+  }
+  .trip-grid-card_link {
+    grid-template-columns: 220px 1fr;
+  }
+  .trip-grid-card_body {
+    padding: 22px 24px;
+  }
 
   /* Bloom: 2-col at tablet */
-  [data-theme="bloom"] .all-trips_grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  [data-theme="bloom"] .all-trips_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
 
   /* Coastal: narrower image column */
-  [data-theme="coastal"] .trip-grid-card_link { grid-template-columns: 1fr 300px; }
-  [data-theme="coastal"] .trip-grid-card_body { padding: 32px 36px 32px 0; }
+  [data-theme="coastal"] .trip-grid-card_link {
+    grid-template-columns: 1fr 300px;
+  }
+  [data-theme="coastal"] .trip-grid-card_body {
+    padding: 32px 36px 32px 0;
+  }
 
   /* Tokyo: 3-col at tablet */
-  [data-theme="tokyo"] .all-trips_grid { grid-template-columns: repeat(3, 1fr); }
+  [data-theme="tokyo"] .all-trips_grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   /* Film: keep 2-col, adjust padding */
-  [data-theme="film"] .trip-grid-card_body { padding: 20px 22px 26px; }
+  [data-theme="film"] .trip-grid-card_body {
+    padding: 20px 22px 26px;
+  }
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    MOBILE  (max 768px)
 ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  .all-trips_inner { padding: 32px 20px 60px; }
+  .all-trips_inner {
+    padding: 32px 20px 60px;
+  }
 
-  .all-trips_head { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .all-trips_count { padding-bottom: 0; }
-  .all-trips_divider { margin-bottom: 28px; }
+  .all-trips_head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .all-trips_count {
+    padding-bottom: 0;
+  }
+  .all-trips_divider {
+    margin-bottom: 28px;
+  }
 
   .all-trips_grid {
     grid-template-columns: 1fr;
@@ -761,25 +838,48 @@
     min-height: 0;
   }
 
-  .trip-grid-card_img-wrap { height: 200px; }
+  .trip-grid-card_img-wrap {
+    height: 200px;
+  }
 
-  .trip-grid-card_body { padding: 20px; gap: 6px; }
-  .trip-grid-card_place { font-size: clamp(20px, 6vw, 28px); }
-  .trip-grid-card_summary { -webkit-line-clamp: 3; }
+  .trip-grid-card_body {
+    padding: 20px;
+    gap: 6px;
+  }
+  .trip-grid-card_place {
+    font-size: clamp(20px, 6vw, 28px);
+  }
+  .trip-grid-card_summary {
+    -webkit-line-clamp: 3;
+  }
 
-  .all-trips_pagination { gap: 2px; }
-  .all-trips_page-btn   { min-width: 36px; height: 36px; padding: 0 8px; font-size: 10px; }
-  .all-trips_page-btn-nav { padding: 0 12px; font-size: 14px; }
+  .all-trips_pagination {
+    gap: 2px;
+  }
+  .all-trips_page-btn {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    font-size: 10px;
+  }
+  .all-trips_page-btn-nav {
+    padding: 0 12px;
+    font-size: 14px;
+  }
 
   /* All themes: single column on mobile */
   [data-theme="bloom"] .all-trips_grid,
   [data-theme="tokyo"] .all-trips_grid,
-  [data-theme="film"]  .all-trips_grid {
+  [data-theme="film"] .all-trips_grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  [data-theme="bloom"] .trip-grid-card { border-radius: 14px; }
-  [data-theme="film"]  .trip-grid-card:nth-child(odd) { border-right: none; }
+  [data-theme="bloom"] .trip-grid-card {
+    border-radius: 14px;
+  }
+  [data-theme="film"] .trip-grid-card:nth-child(odd) {
+    border-right: none;
+  }
 
   /* Coastal: image on top on mobile */
   [data-theme="coastal"] .trip-grid-card_link {
@@ -787,8 +887,14 @@
     grid-template-rows: 220px auto;
     min-height: 0;
   }
-  [data-theme="coastal"] .trip-grid-card_img-wrap { order: 1; height: 220px; }
-  [data-theme="coastal"] .trip-grid-card_body { order: 2; padding: 20px; }
+  [data-theme="coastal"] .trip-grid-card_img-wrap {
+    order: 1;
+    height: 220px;
+  }
+  [data-theme="coastal"] .trip-grid-card_body {
+    order: 2;
+    padding: 20px;
+  }
 
   /* Tokyo: portrait ratio too tall on mobile, switch to landscape */
   [data-theme="tokyo"] .trip-grid-card_img-wrap {
