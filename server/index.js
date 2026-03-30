@@ -33,12 +33,19 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",")
   : ["http://localhost:5173", "http://localhost:4173"];
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : [];
+
 app.use(
   cors({
     origin: (origin, cb) => {
-      if (!origin && process.env.NODE_ENV !== "production")
+      if (!origin) return cb(null, true);
+
+      if (allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
         return cb(null, true);
-      if (allowedOrigins.includes(origin)) return cb(null, true);
+      }
+
       cb(new Error("CORS policy violation"));
     },
     credentials: true,
