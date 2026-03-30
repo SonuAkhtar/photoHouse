@@ -163,10 +163,6 @@
   background: rgba(245, 240, 235, 0.05);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   THEME-SPECIFIC BUTTON OVERRIDES
-═══════════════════════════════════════════════════════════════ */
-
 /* ----- Noir — sharp ghost, solid white on hover ----- */
 [data-theme="noir"] .trip-card_cta {
   letter-spacing: 0.22em;
@@ -288,10 +284,6 @@
   font-style: italic;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TABLET  (max 1024px)
-═══════════════════════════════════════════════════════════════ */
-
 @media (max-width: 1024px) {
   .trip-card_content {
     padding: 0 40px 48px;
@@ -306,13 +298,9 @@
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE  (max 768px)
-═══════════════════════════════════════════════════════════════ */
-
 @media (max-width: 768px) {
   .trip-card_content {
-    padding: 0 24px 36px;
+    padding: 0 24px max(36px, calc(20px + env(safe-area-inset-bottom, 0px)));
   }
   .trip-card_index {
     display: none;

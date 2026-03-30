@@ -133,10 +133,6 @@
   object-fit: cover;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   THEME-SPECIFIC BUTTON OVERRIDES (carousel nav)
-═══════════════════════════════════════════════════════════════ */
-
 /* Bloom — slightly warmer, rounded ----- */
 [data-theme="bloom"] .carousel_nav {
   background: rgba(5, 4, 2, 0.55);
@@ -181,10 +177,6 @@
   border-color: rgba(200, 169, 110, 0.5);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TABLET  (max 1024px)
-═══════════════════════════════════════════════════════════════ */
-
 @media (max-width: 1024px) {
   .carousel_caption-bar {
     padding: 14px 32px;
@@ -199,10 +191,6 @@
     right: 16px;
   }
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE  (max 768px) — full-screen immersive carousel
-═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
   .carousel {

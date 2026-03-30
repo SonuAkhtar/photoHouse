@@ -104,10 +104,6 @@
   text-underline-offset: 3px;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   THEME-SPECIFIC OVERRIDES
-═══════════════════════════════════════════════════════════════ */
-
 [data-theme="noir"] .interests_heading {
   letter-spacing: -0.03em;
   font-optical-sizing: auto;
@@ -170,10 +166,6 @@
   box-shadow: 0 8px 32px rgba(200, 169, 110, 0.08);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TABLET  (max 1024px)
-═══════════════════════════════════════════════════════════════ */
-
 @media (max-width: 1024px) {
   .interests_inner {
     padding: 60px 40px;
@@ -182,10 +174,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE  (max 768px)
-═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
   .interests_inner {

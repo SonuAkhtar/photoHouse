@@ -202,10 +202,6 @@
   transition: background-color 0.4s ease;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TRIP GRID CARDS
-═══════════════════════════════════════════════════════════════ */
-
 .all-trips_grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -367,10 +363,6 @@
   transform: translateX(4px);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   THEME-SPECIFIC OVERRIDES
-═══════════════════════════════════════════════════════════════ */
-
 [data-theme="noir"] .all-trips_heading {
   letter-spacing: -0.03em;
   font-optical-sizing: auto;
@@ -409,10 +401,6 @@
 [data-theme="film"] .trip-grid-card_summary {
   font-style: italic;
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   BLOOM — 3-column grid, image-top cards, soft + rounded
-═══════════════════════════════════════════════════════════════ */
 
 [data-theme="bloom"] .all-trips_grid {
   grid-template-columns: repeat(3, 1fr);
@@ -457,10 +445,6 @@
 [data-theme="bloom"] .trip-grid-card:hover .trip-grid-card_cta {
   color: #c4836a;
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   COASTAL — single-column list, image RIGHT, generous whitespace
-═══════════════════════════════════════════════════════════════ */
 
 [data-theme="coastal"] .all-trips_grid {
   grid-template-columns: 1fr;
@@ -515,10 +499,6 @@
 [data-theme="coastal"] .trip-grid-card:hover .trip-grid-card_cta {
   color: #5b9eb5;
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   TOKYO — 4-column grid, portrait cards, full-bleed + text overlay
-═══════════════════════════════════════════════════════════════ */
 
 [data-theme="tokyo"] .all-trips_grid {
   grid-template-columns: repeat(4, 1fr);
@@ -612,10 +592,6 @@
   color: rgba(245, 240, 235, 0.35);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   FILM — 2-col magazine grid, image-top, no border, editorial type
-═══════════════════════════════════════════════════════════════ */
-
 [data-theme="film"] .all-trips_grid {
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
@@ -683,10 +659,6 @@
 [data-theme="film"] .trip-grid-card:hover .trip-grid-card_cta {
   color: #c8a96e;
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   PAGINATION
-═══════════════════════════════════════════════════════════════ */
 
 .all-trips_pagination {
   display: flex;
@@ -765,10 +737,6 @@
   border-color: rgba(91, 158, 181, 0.5);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TABLET  (max 1024px)
-═══════════════════════════════════════════════════════════════ */
-
 @media (max-width: 1024px) {
   .all-trips_inner {
     padding: 48px 40px 64px;
@@ -804,10 +772,6 @@
     padding: 20px 22px 26px;
   }
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE  (max 768px)
-═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
   .all-trips_inner {

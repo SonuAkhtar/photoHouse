@@ -400,10 +400,6 @@
   cursor: not-allowed;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   THEME OVERRIDES
-═══════════════════════════════════════════════════════════════ */
-
 [data-theme="noir"] .profile_heading {
   letter-spacing: -0.03em;
   font-optical-sizing: auto;
@@ -423,10 +419,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   TABLET / MOBILE
-═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
   .profile_inner {
