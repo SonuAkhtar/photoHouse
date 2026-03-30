@@ -68,10 +68,10 @@
 }
 .trip-card_region {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(245, 240, 235, 0.55);
+  color: rgba(245, 240, 235, 0.72);
 }
 
 .trip-card_place {
@@ -95,9 +95,9 @@
 
 .trip-card_summary {
   font-size: 15px;
-  font-weight: 300;
-  line-height: 1.82;
-  color: rgba(245, 240, 235, 0.52);
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(245, 240, 235, 0.68);
   max-width: 480px;
   margin-bottom: 36px;
 }
@@ -108,7 +108,7 @@
   gap: 14px;
 }
 
-/* ----- Primary CTA button ----- */
+/* ── Primary CTA button ── */
 .trip-card_cta {
   display: inline-flex;
   align-items: center;
@@ -139,7 +139,7 @@
   transform: translateX(4px);
 }
 
-/* ----- Instagram button ----- */
+/* ── Instagram button ── */
 .trip-card_instagram {
   display: inline-flex;
   align-items: center;
@@ -163,7 +163,7 @@
   background: rgba(245, 240, 235, 0.05);
 }
 
-/* ----- Noir — sharp ghost, solid white on hover ----- */
+/* ── Noir — sharp ghost, solid white on hover ── */
 [data-theme="noir"] .trip-card_cta {
   letter-spacing: 0.22em;
   border-color: rgba(245, 240, 235, 0.28);
@@ -174,7 +174,7 @@
   color: #0a0908;
 }
 
-/* ----- Bloom — warm terracotta fill on hover ----- */
+/* ── Bloom — warm terracotta fill on hover ── */
 [data-theme="bloom"] .trip-card_cta {
   letter-spacing: 0.14em;
   border-color: rgba(196, 131, 106, 0.4);
@@ -193,7 +193,7 @@
   background: rgba(196, 131, 106, 0.1);
 }
 
-/* ----- Coastal — pill, blue fill on hover ----- */
+/* ── Coastal — pill, blue fill on hover ── */
 [data-theme="coastal"] .trip-card_cta {
   letter-spacing: 0.18em;
   font-weight: 700;
@@ -205,7 +205,7 @@
   color: #eef5f8;
 }
 
-/* ----- Tokyo — neon fill + glow on hover ----- */
+/* ── Tokyo — neon fill + glow on hover ── */
 [data-theme="tokyo"] .trip-card_cta {
   letter-spacing: 0.26em;
   border-color: rgba(255, 77, 109, 0.35);
@@ -226,7 +226,7 @@
   background: rgba(255, 77, 109, 0.08);
 }
 
-/* ----- Film — gold/sepia, uppercase ----- */
+/* ── Film — gold/sepia, uppercase ── */
 [data-theme="film"] .trip-card_cta {
   letter-spacing: 0.22em;
   border-color: rgba(200, 169, 110, 0.35);
@@ -246,7 +246,7 @@
   background: rgba(200, 169, 110, 0.06);
 }
 
-/* ----- Typographic overrides ----- */
+/* ── Typographic overrides ── */
 [data-theme="noir"] .trip-card_place {
   letter-spacing: -0.03em;
   font-optical-sizing: auto;
@@ -306,17 +306,21 @@
     display: none;
   }
   .trip-card_summary {
-    font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.72;
+    margin-bottom: 22px;
     max-width: 100%;
   }
   .trip-card_place {
-    font-size: clamp(42px, 10vw, 72px);
-    margin-bottom: 12px;
+    font-size: clamp(38px, 9.5vw, 64px);
+    margin-bottom: 10px;
   }
   .trip-card_meta {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+  }
+  .trip-card_dates {
+    font-size: 11.5px;
   }
   .trip-card_actions {
     flex-direction: column;

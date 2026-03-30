@@ -19,7 +19,7 @@
   background: var(--bg);
 }
 
-/* ----- Page header ----- */
+/* ── Page header ── */
 
 .profile_head {
   display: flex;
@@ -91,7 +91,7 @@
   transition: background-color 0.4s ease;
 }
 
-/* ----- Stats (read-only) ----- */
+/* ── Stats (read-only) ── */
 
 .profile_stats-row {
   margin-bottom: 48px;
@@ -138,7 +138,7 @@
   transition: color 0.4s ease;
 }
 
-/* ----- Form ----- */
+/* ── Form ── */
 
 .profile_form {
   display: flex;
@@ -156,7 +156,7 @@
   margin: 0;
 }
 
-/* ----- Section ----- */
+/* ── Section ── */
 
 .profile_section {
   display: flex;
@@ -195,7 +195,7 @@
   border-top: 1px dashed var(--border);
 }
 
-/* ----- Inputs ----- */
+/* ── Inputs ── */
 
 .profile_input,
 .profile_textarea {
@@ -221,7 +221,7 @@
   border-color: var(--theme-accent);
 }
 
-/* ----- Gear tags ----- */
+/* ── Gear tags ── */
 
 .profile_gear-tags {
   display: flex;
@@ -284,7 +284,7 @@
   color: var(--text);
 }
 
-/* ----- Interests ----- */
+/* ── Interests ── */
 
 .profile_add-interest {
   background: none;
@@ -359,7 +359,7 @@
   resize: none;
 }
 
-/* ----- Save bar ----- */
+/* ── Save bar ── */
 
 .profile_save-bar {
   display: flex;

@@ -66,7 +66,7 @@
   transition: color 0.4s ease;
 }
 
-/* ----- Logo per-theme refinements ----- */
+/* ── Logo per-theme refinements ── */
 
 [data-theme="noir"] .site-header_logo-p {
   font-size: 22px;
@@ -210,7 +210,7 @@
   transform: rotate(-90deg);
 }
 
-/* ----- Theme picker dropdown ----- */
+/* ── Theme picker dropdown ── */
 .theme-picker {
   position: absolute;
   top: calc(100% + 10px);
@@ -285,7 +285,7 @@
   flex-shrink: 0;
 }
 
-/* ----- Add Memory button ----- */
+/* ── Add Memory button ── */
 .site-header_add-btn {
   display: flex;
   align-items: center;
@@ -311,7 +311,7 @@
   line-height: 1;
 }
 
-/* ----- User avatar + dropdown ----- */
+/* ── User avatar + dropdown ── */
 .site-header_user {
   position: relative;
 }
@@ -402,7 +402,7 @@
   color: var(--text);
 }
 
-/* ----- Burger button ----- */
+/* ── Burger button ── */
 .site-header_burger {
   display: none;
   flex-direction: column;
@@ -419,8 +419,8 @@
 .site-header_burger-bar {
   display: block;
   width: 100%;
-  height: 1px;
-  background: var(--text-muted);
+  height: 1.5px;
+  background: var(--text);
   transition:
     transform 0.3s ease,
     opacity 0.3s ease,
@@ -428,23 +428,23 @@
   transform-origin: center;
 }
 
-/* ----- Mobile menu overlay ----- */
+/* ── Mobile menu overlay ── */
 .mobile-menu {
   display: none;
 }
 
-/* ----- Theme: Noir — sharp monochrome ----- */
+/* ── Theme: Noir — sharp monochrome ── */
 [data-theme="noir"] .site-header_theme-btn:hover {
   background: rgba(245, 240, 235, 0.05);
 }
 
-/* ----- Theme: Peach (bloom) — warm pastel ----- */
+/* ── Theme: Peach (bloom) — warm pastel ── */
 [data-theme="bloom"] .site-header_theme-btn:hover {
   background: rgba(217, 123, 81, 0.08);
   border-color: rgba(217, 123, 81, 0.35);
 }
 
-/* ----- Theme: Coastal — pill, blue ----- */
+/* ── Theme: Coastal — pill, blue ── */
 [data-theme="coastal"] .site-header_theme-btn {
   padding: 7px 18px;
   font-weight: 600;
@@ -454,13 +454,13 @@
   border-color: rgba(91, 158, 181, 0.45);
 }
 
-/* ----- Theme: Lavender (tokyo) — soft violet ----- */
+/* ── Theme: Lavender (tokyo) — soft violet ── */
 [data-theme="tokyo"] .site-header_theme-btn:hover {
   background: rgba(124, 92, 191, 0.08);
   border-color: rgba(124, 92, 191, 0.35);
 }
 
-/* ----- Theme: Rose (film) — blush ----- */
+/* ── Theme: Rose (film) — blush ── */
 [data-theme="film"] .site-header_theme-btn:hover {
   background: rgba(199, 84, 120, 0.08);
   border-color: rgba(199, 84, 120, 0.35);
@@ -552,7 +552,7 @@
     font-style: var(--font-display-style);
     font-weight: var(--font-display-weight);
     font-size: clamp(28px, 8vw, 44px);
-    color: var(--text-muted);
+    color: var(--text);
     transition:
       color 0.2s ease,
       padding-left 0.2s ease;
@@ -661,8 +661,8 @@
 
   .mobile-menu_user-name {
     font-family: var(--font-body);
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-size: 0.9rem;
+    color: var(--text);
     margin: 0;
   }
 

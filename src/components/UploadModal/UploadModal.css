@@ -1,3 +1,5 @@
+/* ── Overlay ─────────────────────────────────────────────────────────────── */
+
 .upload-overlay {
   position: fixed;
   inset: 0;
@@ -12,6 +14,8 @@
   overflow-y: auto;
 }
 
+/* ── Modal card ──────────────────────────────────────────────────────────── */
+
 .upload-modal {
   width: 100%;
   max-width: 680px;
@@ -24,6 +28,8 @@
   overflow: hidden;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
 }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
 
 .upload-modal_head {
   display: flex;
@@ -63,6 +69,8 @@
   color: var(--text);
 }
 
+/* ── Form ────────────────────────────────────────────────────────────────── */
+
 .upload-modal_form {
   padding: 1.5rem 2rem 2rem;
   display: flex;
@@ -79,6 +87,8 @@
   padding: 0.6rem 0.8rem;
   margin: 0;
 }
+
+/* ── Section ─────────────────────────────────────────────────────────────── */
 
 .upload-modal_section {
   border: none;
@@ -99,6 +109,8 @@
   padding: 0;
   margin-bottom: 0.25rem;
 }
+
+/* ── Field ───────────────────────────────────────────────────────────────── */
 
 .upload-modal_row {
   display: grid;
@@ -150,6 +162,8 @@
   border-color: var(--theme-accent);
 }
 
+/* ── Accent swatches ─────────────────────────────────────────────────────── */
+
 .upload-modal_accent-row {
   display: flex;
   flex-wrap: wrap;
@@ -163,9 +177,7 @@
   border: 2px solid transparent;
   cursor: pointer;
   padding: 0;
-  transition:
-    transform 0.15s,
-    border-color 0.15s;
+  transition: transform 0.15s, border-color 0.15s;
   box-sizing: border-box;
 }
 
@@ -177,6 +189,8 @@
   border-color: var(--text);
   transform: scale(1.1);
 }
+
+/* ── Mode toggle ─────────────────────────────────────────────────────────── */
 
 .upload-modal_mode-row {
   display: flex;
@@ -206,6 +220,8 @@
   border-color: var(--text);
 }
 
+/* ── Drop zone ───────────────────────────────────────────────────────────── */
+
 .upload-modal_dropzone {
   border: 1.5px dashed var(--border);
   border-radius: var(--radius-card);
@@ -215,9 +231,7 @@
   align-items: center;
   gap: 0.6rem;
   cursor: pointer;
-  transition:
-    border-color 0.2s,
-    background 0.2s;
+  transition: border-color 0.2s, background 0.2s;
   position: relative;
 }
 
@@ -252,6 +266,8 @@
   cursor: pointer;
   font-size: 0;
 }
+
+/* ── Previews ────────────────────────────────────────────────────────────── */
 
 .upload-modal_previews {
   display: grid;
@@ -348,9 +364,7 @@
   color: var(--text-muted);
   cursor: pointer;
   font-size: 0.75rem;
-  transition:
-    border-color 0.15s,
-    color 0.15s;
+  transition: border-color 0.15s, color 0.15s;
 }
 
 .upload-modal_add-more span:first-child {
@@ -363,6 +377,8 @@
   border-color: var(--theme-accent);
   color: var(--text);
 }
+
+/* ── Actions ─────────────────────────────────────────────────────────────── */
 
 .upload-modal_actions {
   display: flex;
@@ -381,9 +397,7 @@
   font-size: 0.875rem;
   color: var(--text-muted);
   cursor: pointer;
-  transition:
-    border-color 0.15s,
-    color 0.15s;
+  transition: border-color 0.15s, color 0.15s;
 }
 
 .upload-modal_cancel:hover {
@@ -415,6 +429,8 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
   .upload-overlay {

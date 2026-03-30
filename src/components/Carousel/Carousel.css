@@ -34,7 +34,7 @@
   animation: slideOutRight var(--speed) var(--ease-out) forwards;
 }
 
-/* ----- Nav arrows ----- */
+/* ── Nav arrows ── */
 .carousel_nav {
   position: absolute;
   top: 50%;
@@ -69,7 +69,7 @@
   right: 28px;
 }
 
-/* ----- Caption + counter ----- */
+/* ── Caption + counter ── */
 .carousel_caption-bar {
   display: flex;
   align-items: center;
@@ -93,7 +93,7 @@
   transition: color 0.4s ease;
 }
 
-/* ----- Thumbnails ----- */
+/* ── Thumbnails ── */
 .carousel_thumbs {
   display: flex;
   gap: 8px;
@@ -133,7 +133,7 @@
   object-fit: cover;
 }
 
-/* Bloom — slightly warmer, rounded ----- */
+/* Bloom — slightly warmer, rounded ── */
 [data-theme="bloom"] .carousel_nav {
   background: rgba(5, 4, 2, 0.55);
   border-color: rgba(196, 131, 106, 0.18);
@@ -143,7 +143,7 @@
   border-color: rgba(196, 131, 106, 0.5);
 }
 
-/* Coastal — clean circular ----- */
+/* Coastal — clean circular ── */
 [data-theme="coastal"] .carousel_nav {
   background: rgba(4, 10, 14, 0.55);
   border-color: rgba(91, 158, 181, 0.2);
@@ -153,7 +153,7 @@
   border-color: rgba(91, 158, 181, 0.55);
 }
 
-/* Tokyo — sharp square, neon ----- */
+/* Tokyo — sharp square, neon ── */
 [data-theme="tokyo"] .carousel_nav {
   border-radius: 0;
   background: rgba(4, 4, 8, 0.75);
@@ -167,7 +167,7 @@
   transform: translateY(-50%) scale(1);
 }
 
-/* Film — gold border ----- */
+/* Film — gold border ── */
 [data-theme="film"] .carousel_nav {
   background: rgba(8, 6, 4, 0.65);
   border-color: rgba(200, 169, 110, 0.18);

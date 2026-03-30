@@ -9,7 +9,7 @@
   display: none;
 }
 
-/* ----- Empty state ----- */
+/* ── Empty state ── */
 .home-empty {
   height: calc(100dvh - var(--nav-h));
   scroll-snap-align: start;
@@ -67,7 +67,7 @@
   opacity: 0.8;
 }
 
-/* ----- Loading spinner ----- */
+/* ── Loading spinner ── */
 .home-loading {
   min-height: 60dvh;
   display: flex;
@@ -75,6 +75,7 @@
   justify-content: center;
 }
 
+/* ── Mobile — disable mandatory snap so footer is reachable ── */
 @media (max-width: 768px) {
   .home {
     scroll-snap-type: none;

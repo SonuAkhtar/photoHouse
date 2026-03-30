@@ -1,3 +1,5 @@
+/* ── Auth shared layout ────────────────────────────────────────────────────── */
+
 .auth-page {
   min-height: 100dvh;
   display: flex;
@@ -19,6 +21,8 @@
   gap: 1.75rem;
 }
 
+/* ── Brand mark ──────────────────────────────────────────────────────────────*/
+
 .auth-brand {
   display: flex;
   align-items: center;
@@ -37,6 +41,8 @@
 .auth-brand-name span {
   color: var(--theme-accent);
 }
+
+/* ── Header ──────────────────────────────────────────────────────────────────*/
 
 .auth-header {
   display: flex;
@@ -60,6 +66,8 @@
   color: var(--text-muted);
   margin: 0;
 }
+
+/* ── Form ────────────────────────────────────────────────────────────────────*/
 
 .auth-form {
   display: flex;
@@ -143,6 +151,8 @@
   cursor: not-allowed;
 }
 
+/* ── Spinner ─────────────────────────────────────────────────────────────────*/
+
 .auth-spinner {
   width: 16px;
   height: 16px;
@@ -154,10 +164,10 @@
 }
 
 @keyframes auth-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
+
+/* ── Switch link ─────────────────────────────────────────────────────────────*/
 
 .auth-switch {
   font-size: 0.825rem;
@@ -176,6 +186,8 @@
   text-decoration: underline;
 }
 
+/* ── Full-page loading state (used by ProtectedRoute) ────────────────────────*/
+
 .auth-loading {
   min-height: 100dvh;
   display: flex;
@@ -193,6 +205,8 @@
   animation: auth-spin 0.7s linear infinite;
   display: inline-block;
 }
+
+/* ── Mobile ──────────────────────────────────────────────────────────────────*/
 
 @media (max-width: 480px) {
   .auth-card {

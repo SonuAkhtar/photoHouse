@@ -4,10 +4,10 @@
   --bg-secondary: #0e0c0b;
   --bg-header: transparent;
   --text: #f5f0eb;
-  --text-muted: rgba(245, 240, 235, 0.5);
-  --text-faint: rgba(245, 240, 235, 0.2);
-  --border: rgba(245, 240, 235, 0.1);
-  --border-hover: rgba(245, 240, 235, 0.28);
+  --text-muted: rgba(245, 240, 235, 0.62);
+  --text-faint: rgba(245, 240, 235, 0.38);
+  --border: rgba(245, 240, 235, 0.13);
+  --border-hover: rgba(245, 240, 235, 0.32);
   --glow-primary: rgba(137, 180, 200, 0.07);
   --theme-accent: #89b4c8;
   --theme-accent-text: #0a0908;
@@ -31,8 +31,8 @@
   --header-blur: blur(12px);
   --header-border: rgba(245, 240, 235, 0.08);
 
-  --card-overlay-a: rgba(8, 7, 6, 0.96);
-  --card-overlay-b: rgba(8, 7, 6, 0.55);
+  --card-overlay-a: rgba(8, 7, 6, 0.97);
+  --card-overlay-b: rgba(8, 7, 6, 0.65);
 
   --nav-h: 64px;
 }
@@ -42,10 +42,10 @@
   --bg-secondary: #f9e6d8;
   --bg-header: rgba(253, 242, 236, 0.92);
   --text: #3c1e10;
-  --text-muted: rgba(60, 30, 16, 0.55);
-  --text-faint: rgba(60, 30, 16, 0.28);
-  --border: rgba(60, 30, 16, 0.1);
-  --border-hover: rgba(60, 30, 16, 0.3);
+  --text-muted: rgba(60, 30, 16, 0.65);
+  --text-faint: rgba(60, 30, 16, 0.42);
+  --border: rgba(60, 30, 16, 0.13);
+  --border-hover: rgba(60, 30, 16, 0.35);
   --glow-primary: rgba(217, 123, 81, 0.07);
   --theme-accent: #d97b51;
   --theme-accent-text: #fdf2ec;
@@ -69,8 +69,8 @@
   --header-blur: blur(16px);
   --header-border: rgba(60, 30, 16, 0.1);
 
-  --card-overlay-a: rgba(15, 5, 2, 0.92);
-  --card-overlay-b: rgba(15, 5, 2, 0.5);
+  --card-overlay-a: rgba(15, 5, 2, 0.94);
+  --card-overlay-b: rgba(15, 5, 2, 0.62);
 }
 
 [data-theme="coastal"] {
@@ -78,10 +78,10 @@
   --bg-secondary: #e4f0f5;
   --bg-header: rgba(238, 245, 248, 0.9);
   --text: #0f2a38;
-  --text-muted: rgba(15, 42, 56, 0.55);
-  --text-faint: rgba(15, 42, 56, 0.28);
-  --border: rgba(15, 42, 56, 0.1);
-  --border-hover: rgba(15, 42, 56, 0.28);
+  --text-muted: rgba(15, 42, 56, 0.65);
+  --text-faint: rgba(15, 42, 56, 0.42);
+  --border: rgba(15, 42, 56, 0.13);
+  --border-hover: rgba(15, 42, 56, 0.32);
   --glow-primary: rgba(91, 158, 181, 0.09);
   --theme-accent: #5b9eb5;
   --theme-accent-text: #eef5f8;
@@ -105,8 +105,8 @@
   --header-blur: blur(20px);
   --header-border: rgba(15, 42, 56, 0.1);
 
-  --card-overlay-a: rgba(4, 10, 14, 0.92);
-  --card-overlay-b: rgba(4, 10, 14, 0.5);
+  --card-overlay-a: rgba(4, 10, 14, 0.94);
+  --card-overlay-b: rgba(4, 10, 14, 0.62);
 }
 
 [data-theme="tokyo"] {
@@ -114,10 +114,10 @@
   --bg-secondary: #ece6f5;
   --bg-header: rgba(244, 240, 250, 0.92);
   --text: #2a1d4a;
-  --text-muted: rgba(42, 29, 74, 0.55);
-  --text-faint: rgba(42, 29, 74, 0.28);
-  --border: rgba(42, 29, 74, 0.1);
-  --border-hover: rgba(42, 29, 74, 0.3);
+  --text-muted: rgba(42, 29, 74, 0.65);
+  --text-faint: rgba(42, 29, 74, 0.42);
+  --border: rgba(42, 29, 74, 0.13);
+  --border-hover: rgba(42, 29, 74, 0.35);
   --glow-primary: rgba(124, 92, 191, 0.08);
   --theme-accent: #7c5cbf;
   --theme-accent-text: #f4f0fa;
@@ -141,8 +141,8 @@
   --header-blur: blur(16px);
   --header-border: rgba(42, 29, 74, 0.08);
 
-  --card-overlay-a: rgba(10, 5, 20, 0.92);
-  --card-overlay-b: rgba(10, 5, 20, 0.52);
+  --card-overlay-a: rgba(10, 5, 20, 0.94);
+  --card-overlay-b: rgba(10, 5, 20, 0.64);
 }
 
 [data-theme="film"] {
@@ -150,10 +150,10 @@
   --bg-secondary: #f7e3e8;
   --bg-header: rgba(253, 240, 243, 0.92);
   --text: #3a0f1e;
-  --text-muted: rgba(58, 15, 30, 0.55);
-  --text-faint: rgba(58, 15, 30, 0.28);
-  --border: rgba(58, 15, 30, 0.1);
-  --border-hover: rgba(58, 15, 30, 0.28);
+  --text-muted: rgba(58, 15, 30, 0.65);
+  --text-faint: rgba(58, 15, 30, 0.42);
+  --border: rgba(58, 15, 30, 0.13);
+  --border-hover: rgba(58, 15, 30, 0.35);
   --glow-primary: rgba(199, 84, 120, 0.07);
   --theme-accent: #c75478;
   --theme-accent-text: #fdf0f3;
@@ -177,8 +177,8 @@
   --header-blur: blur(16px);
   --header-border: rgba(58, 15, 30, 0.1);
 
-  --card-overlay-a: rgba(15, 3, 8, 0.92);
-  --card-overlay-b: rgba(15, 3, 8, 0.52);
+  --card-overlay-a: rgba(15, 3, 8, 0.94);
+  --card-overlay-b: rgba(15, 3, 8, 0.64);
 }
 
 *,

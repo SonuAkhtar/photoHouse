@@ -11,7 +11,7 @@
     border-color 0.45s ease;
 }
 
-/* ----- Marquee ----- */
+/* ── Marquee ── */
 .page-footer_marquee {
   flex-shrink: 0;
   overflow: hidden;
@@ -35,7 +35,7 @@
   transition: color 0.4s ease;
 }
 
-/* ----- Three-column grid ----- */
+/* ── Three-column grid ── */
 .page-footer_grid {
   flex: 1;
   display: grid;
@@ -63,8 +63,8 @@
   transition: color 0.4s ease;
 }
 .page-footer_tagline {
-  font-size: 13px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 400;
   line-height: 1.75;
   color: var(--text-muted);
   transition: color 0.4s ease;
@@ -228,7 +228,7 @@
   padding-left: 6px;
 }
 
-/* ----- Bottom bar ----- */
+/* ── Bottom bar ── */
 .page-footer_bar {
   flex-shrink: 0;
   display: flex;
@@ -309,12 +309,14 @@
 }
 
 @media (max-width: 768px) {
+  /* ── Remove snap + fixed height so footer scrolls naturally ── */
   .page-footer {
     height: auto;
     overflow: visible;
     scroll-snap-align: unset;
   }
 
+  /* ── Show only 5 recent trips (index-label is child 1, trips are 2–N) ── */
   .page-footer_index > .page-footer_trip:nth-child(n + 7) {
     display: none;
   }
@@ -348,8 +350,8 @@
     flex-shrink: 0;
   }
   .page-footer_tagline {
-    font-size: 12px;
-    line-height: 1.55;
+    font-size: 13px;
+    line-height: 1.6;
     flex: 1;
   }
   .page-footer_instagram {
@@ -357,7 +359,7 @@
     align-self: center;
     padding: 8px 14px;
     white-space: nowrap;
-    font-size: 9.5px;
+    font-size: 10px;
   }
 
   .page-footer_index {
@@ -392,7 +394,7 @@
   }
   .page-footer_trip-place {
     flex: 1;
-    font-size: 16px;
+    font-size: 17px;
   }
   .page-footer_trip-meta {
     display: none;
