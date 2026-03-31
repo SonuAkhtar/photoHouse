@@ -22,7 +22,14 @@ import Interests from "./pages/Interests/Interests";
 import Profile from "./pages/Profile/Profile";
 import Stats from "./pages/Stats/Stats";
 import MapView from "./pages/MapView/MapView";
-import PublicProfile from "./pages/PublicProfile/PublicProfile";
+import PublicLayout from "./pages/PublicLayout/PublicLayout";
+import PublicHome from "./pages/PublicHome/PublicHome";
+import PublicAllTrips from "./pages/PublicAllTrips/PublicAllTrips";
+import PublicMapView from "./pages/PublicMapView/PublicMapView";
+import PublicStats from "./pages/PublicStats/PublicStats";
+import PublicAbout from "./pages/PublicAbout/PublicAbout";
+import PublicInterests from "./pages/PublicInterests/PublicInterests";
+import PublicTripDetail from "./pages/PublicTripDetail/PublicTripDetail";
 
 const pageVariants = {
   initial: { opacity: 0, y: 10 },
@@ -52,7 +59,15 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/u/:username" element={<PublicProfile />} />
+          <Route path="/u/:username" element={<PublicLayout />}>
+            <Route index element={<PublicHome />} />
+            <Route path="trips" element={<PublicAllTrips />} />
+            <Route path="map" element={<PublicMapView />} />
+            <Route path="stats" element={<PublicStats />} />
+            <Route path="about" element={<PublicAbout />} />
+            <Route path="interests" element={<PublicInterests />} />
+            <Route path="trip/:tripId" element={<PublicTripDetail />} />
+          </Route>
 
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Home />} />

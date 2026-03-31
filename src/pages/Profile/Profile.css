@@ -19,8 +19,6 @@
   background: var(--bg);
 }
 
-/* ── Page header ── */
-
 .profile_head {
   display: flex;
   align-items: flex-start;
@@ -61,6 +59,30 @@
 .profile_head-actions {
   padding-top: 8px;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.profile_share-btn {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+.profile_share-btn:hover {
+  border-color: var(--accent, #89b4c8);
+  color: var(--accent, #89b4c8);
 }
 
 .profile_logout-btn {
@@ -90,8 +112,6 @@
   margin: 36px 0 48px;
   transition: background-color 0.4s ease;
 }
-
-/* ── Stats (read-only) ── */
 
 .profile_stats-row {
   margin-bottom: 48px;
@@ -138,8 +158,6 @@
   transition: color 0.4s ease;
 }
 
-/* ── Form ── */
-
 .profile_form {
   display: flex;
   flex-direction: column;
@@ -155,8 +173,6 @@
   padding: 0.6rem 0.8rem;
   margin: 0;
 }
-
-/* ── Section ── */
 
 .profile_section {
   display: flex;
@@ -195,8 +211,6 @@
   border-top: 1px dashed var(--border);
 }
 
-/* ── Inputs ── */
-
 .profile_input,
 .profile_textarea {
   width: 100%;
@@ -220,8 +234,6 @@
 .profile_textarea:focus {
   border-color: var(--theme-accent);
 }
-
-/* ── Gear tags ── */
 
 .profile_gear-tags {
   display: flex;
@@ -283,8 +295,6 @@
   border-color: var(--theme-accent);
   color: var(--text);
 }
-
-/* ── Interests ── */
 
 .profile_add-interest {
   background: none;
@@ -358,8 +368,6 @@
   font-size: 0.85rem !important;
   resize: none;
 }
-
-/* ── Save bar ── */
 
 .profile_save-bar {
   display: flex;

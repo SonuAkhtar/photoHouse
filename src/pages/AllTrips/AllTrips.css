@@ -26,7 +26,6 @@
   padding: 64px 64px 80px;
 }
 
-/* ── Page header ── */
 .all-trips_head {
   display: flex;
   align-items: flex-end;
@@ -227,7 +226,6 @@
   min-height: 200px;
 }
 
-/* ── Cover image pane ── */
 .trip-grid-card_img-wrap {
   position: relative;
   overflow: hidden;
@@ -268,7 +266,6 @@
   color: rgba(245, 240, 235, 0.6);
 }
 
-/* ── Text pane ── */
 .trip-grid-card_body {
   padding: 28px 32px;
   display: flex;
@@ -542,7 +539,6 @@
   opacity: 1;
 }
 
-/* Text floats over the image at the bottom */
 [data-theme="tokyo"] .trip-grid-card_body {
   position: absolute;
   bottom: 0;
@@ -578,7 +574,6 @@
   font-size: 9.5px;
 }
 
-/* Hide summary in Tokyo overlay layout — no room */
 [data-theme="tokyo"] .trip-grid-card_summary {
   display: none;
 }
@@ -618,7 +613,6 @@
   min-height: 0;
 }
 
-/* Alternate image aspect ratio for editorial feel */
 [data-theme="film"] .trip-grid-card:nth-child(odd) .trip-grid-card_img-wrap {
   width: 100%;
   aspect-ratio: 3 / 2;
@@ -705,7 +699,6 @@
   cursor: default;
 }
 
-/* Tokyo — neon pagination */
 [data-theme="tokyo"] .all-trips_page-btn-active {
   border-color: var(--theme-accent);
   color: var(--theme-accent);
@@ -716,19 +709,16 @@
   color: var(--theme-accent);
 }
 
-/* Bloom — warm */
 [data-theme="bloom"] .all-trips_page-btn-active {
   border-color: rgba(196, 131, 106, 0.55);
   background: rgba(196, 131, 106, 0.08);
 }
 
-/* Film — gold */
 [data-theme="film"] .all-trips_page-btn-active {
   border-color: rgba(200, 169, 110, 0.55);
   background: rgba(200, 169, 110, 0.08);
 }
 
-/* Coastal — pill */
 [data-theme="coastal"] .all-trips_page-btn {
   font-weight: 600;
 }
@@ -748,13 +738,11 @@
     padding: 22px 24px;
   }
 
-  /* Bloom: 2-col at tablet */
   [data-theme="bloom"] .all-trips_grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
-  /* Coastal: narrower image column */
   [data-theme="coastal"] .trip-grid-card_link {
     grid-template-columns: 1fr 300px;
   }
@@ -762,12 +750,10 @@
     padding: 32px 36px 32px 0;
   }
 
-  /* Tokyo: 3-col at tablet */
   [data-theme="tokyo"] .all-trips_grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Film: keep 2-col, adjust padding */
   [data-theme="film"] .trip-grid-card_body {
     padding: 20px 22px 26px;
   }
@@ -838,7 +824,6 @@
     font-size: 14px;
   }
 
-  /* All themes: single column on mobile */
   [data-theme="bloom"] .all-trips_grid,
   [data-theme="tokyo"] .all-trips_grid,
   [data-theme="film"] .all-trips_grid {
@@ -852,7 +837,6 @@
     border-right: none;
   }
 
-  /* Coastal: image on top on mobile */
   [data-theme="coastal"] .trip-grid-card_link {
     grid-template-columns: 1fr;
     grid-template-rows: 220px auto;
@@ -867,7 +851,6 @@
     padding: 20px;
   }
 
-  /* Tokyo: portrait ratio too tall on mobile, switch to landscape */
   [data-theme="tokyo"] .trip-grid-card_img-wrap {
     aspect-ratio: 16 / 9;
   }

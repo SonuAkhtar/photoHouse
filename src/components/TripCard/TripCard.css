@@ -108,7 +108,6 @@
   gap: 14px;
 }
 
-/* ── Primary CTA button ── */
 .trip-card_cta {
   display: inline-flex;
   align-items: center;
@@ -139,7 +138,6 @@
   transform: translateX(4px);
 }
 
-/* ── Instagram button ── */
 .trip-card_instagram {
   display: inline-flex;
   align-items: center;
@@ -163,7 +161,6 @@
   background: rgba(245, 240, 235, 0.05);
 }
 
-/* ── Noir — sharp ghost, solid white on hover ── */
 [data-theme="noir"] .trip-card_cta {
   letter-spacing: 0.22em;
   border-color: rgba(245, 240, 235, 0.28);
@@ -174,7 +171,6 @@
   color: #0a0908;
 }
 
-/* ── Bloom — warm terracotta fill on hover ── */
 [data-theme="bloom"] .trip-card_cta {
   letter-spacing: 0.14em;
   border-color: rgba(196, 131, 106, 0.4);
@@ -193,7 +189,6 @@
   background: rgba(196, 131, 106, 0.1);
 }
 
-/* ── Coastal — pill, blue fill on hover ── */
 [data-theme="coastal"] .trip-card_cta {
   letter-spacing: 0.18em;
   font-weight: 700;
@@ -205,7 +200,6 @@
   color: #eef5f8;
 }
 
-/* ── Tokyo — neon fill + glow on hover ── */
 [data-theme="tokyo"] .trip-card_cta {
   letter-spacing: 0.26em;
   border-color: rgba(255, 77, 109, 0.35);
@@ -226,7 +220,6 @@
   background: rgba(255, 77, 109, 0.08);
 }
 
-/* ── Film — gold/sepia, uppercase ── */
 [data-theme="film"] .trip-card_cta {
   letter-spacing: 0.22em;
   border-color: rgba(200, 169, 110, 0.35);
@@ -246,7 +239,6 @@
   background: rgba(200, 169, 110, 0.06);
 }
 
-/* ── Typographic overrides ── */
 [data-theme="noir"] .trip-card_place {
   letter-spacing: -0.03em;
   font-optical-sizing: auto;

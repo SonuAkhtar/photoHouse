@@ -1,25 +1,17 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fetchTrips, type ApiTrip } from "../../services/api";
-import { TripCardSkeleton } from "../../components/Skeleton/Skeleton";
-import "./AllTrips.css";
+import { usePub } from "../../context/PublicProfileContext";
+import "../AllTrips/AllTrips.css";
 
 const PER_PAGE = 10;
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-export default function AllTrips() {
-  const [trips, setTrips] = useState<ApiTrip[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function PublicAllTrips() {
+  const { trips, username } = usePub();
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchTrips()
-      .then(({ data }) => setTrips(data))
-      .finally(() => setLoading(false));
-  }, []);
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
@@ -77,9 +69,7 @@ export default function AllTrips() {
             <h1 className="all-trips_heading">All Journeys</h1>
           </div>
           <span className="all-trips_count">
-            {loading
-              ? "—"
-              : `${filtered.length} destination${filtered.length !== 1 ? "s" : ""}`}
+            {`${filtered.length} destination${filtered.length !== 1 ? "s" : ""}`}
           </span>
         </motion.div>
 
@@ -151,19 +141,10 @@ export default function AllTrips() {
 
         <div className="all-trips_divider" />
 
-        {loading ? (
-          <div className="all-trips_grid">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <TripCardSkeleton key={i} />
-            ))}
-          </div>
-        ) : filtered.length === 0 ? (
+        {filtered.length === 0 ? (
           <div className="all-trips_empty">
             {trips.length === 0 ? (
-              <p>
-                No trips yet. Use <strong>+ Add Memory</strong> to start your
-                journal.
-              </p>
+              <p>No trips yet.</p>
             ) : (
               <p>
                 No results for <strong>"{query || activeTag}"</strong>. Try a
@@ -181,7 +162,10 @@ export default function AllTrips() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: i * 0.045, ease }}
               >
-                <Link to={`/trip/${trip.id}`} className="trip-grid-card_link">
+                <Link
+                  to={`/u/${username}/trip/${trip.id}`}
+                  className="trip-grid-card_link"
+                >
                   <div
                     className="trip-grid-card_img-wrap"
                     style={{ ["--card-accent" as string]: trip.accent }}
@@ -231,7 +215,7 @@ export default function AllTrips() {
           </div>
         )}
 
-        {!loading && totalPages > 1 && (
+        {totalPages > 1 && (
           <div className="all-trips_pagination">
             <button
               className="all-trips_page-btn all-trips_page-btn-nav"

@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fetchProfile, type ApiInterest } from "../../services/api";
-import "./Interests.css";
+import { usePub } from "../../context/PublicProfileContext";
+import "../Interests/Interests.css";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-export default function Interests() {
-  const [interests, setInterests] = useState<ApiInterest[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchProfile()
-      .then(({ data }) => setInterests(data.interests || []))
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  }, []);
+export default function PublicInterests() {
+  const { profile } = usePub();
+  const interests = profile.interests || [];
 
   return (
     <main className="interests">
@@ -38,11 +29,7 @@ export default function Interests() {
           Areas of interest
         </motion.h1>
 
-        {loading ? (
-          <div className="interests_loading">
-            <span className="auth-loading-spinner" />
-          </div>
-        ) : interests.length === 0 ? (
+        {interests.length === 0 ? (
           <motion.div
             className="interests_empty"
             initial={{ opacity: 0, y: 20 }}
@@ -50,14 +37,6 @@ export default function Interests() {
             transition={{ duration: 0.6, delay: 0.3, ease }}
           >
             <p>No interests added yet.</p>
-            <p>
-              Go to your{" "}
-              <Link to="/profile" className="interests_profile-link">
-                profile page
-              </Link>{" "}
-              to add your areas of interest — they'll appear here in the same
-              card format.
-            </p>
           </motion.div>
         ) : (
           <div className="interests_grid">

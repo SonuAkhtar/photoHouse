@@ -16,7 +16,6 @@ export interface Trip {
   instagram?: string;
 }
 
-// picsum helper — seed-based so always consistent
 const p = (seed: string, w = 1600, h = 900) =>
   `https://picsum.photos/seed/${seed}/${w}/${h}`;
 

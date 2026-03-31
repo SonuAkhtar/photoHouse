@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import "./Footer.css";
-
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import type { ApiTrip } from "../../services/api";
+import "./Footer.css";
 
 interface Props {
   trips?: ApiTrip[];
+  publicBase?: string;
 }
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -16,16 +16,14 @@ function getMarqueeText(trips: ApiTrip[]) {
 }
 
 function getTripMeta(trip: ApiTrip) {
-  // dates: "June 14 – 21, 2024"  →  "June 14"
   const datePart = trip.dates.split(/[–-]/)[0].trim();
-  // region: "Cyclades · Greece"  →  "Greece"
   const regionParts = trip.region.split(" · ");
   const country =
     regionParts.length > 1 ? regionParts[regionParts.length - 1] : trip.region;
   return `${datePart} · ${country}`;
 }
 
-export default function Footer({ trips = [] }: Props) {
+export default function Footer({ trips = [], publicBase }: Props) {
   const marqueeText = getMarqueeText(trips);
 
   return (
@@ -45,7 +43,7 @@ export default function Footer({ trips = [] }: Props) {
           transition={{ duration: 0.7, ease }}
           viewport={{ amount: 0.3, once: false }}
         >
-          <p className="page-footer_initials">PH</p>
+          <p className="page-footer_initials">TH</p>
           <p className="page-footer_tagline">
             A visual archive of
             <br />
@@ -82,7 +80,14 @@ export default function Footer({ trips = [] }: Props) {
                 transition={{ duration: 0.5, delay: i * 0.07, ease }}
                 viewport={{ amount: 0.2, once: false }}
               >
-                <Link to={`/trip/${trip.id}`} className="page-footer_trip-link">
+                <Link
+                  to={
+                    publicBase
+                      ? `${publicBase}/trip/${trip.id}`
+                      : `/trip/${trip.id}`
+                  }
+                  className="page-footer_trip-link"
+                >
                   <span className="page-footer_trip-index">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -106,9 +111,15 @@ export default function Footer({ trips = [] }: Props) {
         >
           <p className="page-footer_side-label">Navigation</p>
           {[
-            { label: "Journeys", href: "/" },
-            { label: "About Me", href: "/about" },
-            { label: "Interests", href: "/interests" },
+            { label: "Journeys", href: publicBase ?? "/" },
+            {
+              label: "About Me",
+              href: publicBase ? `${publicBase}/about` : "/about",
+            },
+            {
+              label: "Interests",
+              href: publicBase ? `${publicBase}/interests` : "/interests",
+            },
           ].map((link) => (
             <Link
               key={link.href}
@@ -123,7 +134,7 @@ export default function Footer({ trips = [] }: Props) {
 
       <div className="page-footer_bar">
         <span className="page-footer_copy">
-          Photo House © {new Date().getFullYear()}
+          Trip House © {new Date().getFullYear()}
         </span>
         <span className="page-footer_copy">All photographs by the author</span>
       </div>

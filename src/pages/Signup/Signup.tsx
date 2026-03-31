@@ -1,10 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Signup.css";
-
 import { useAuth } from "../../context/AuthContext";
 import { registerUser } from "../../services/api";
 import "../Login/Login.css";
+import "./Signup.css";
 
 export default function Signup() {
   const { login } = useAuth();
@@ -110,7 +109,7 @@ export default function Signup() {
             />
           </svg>
           <span className="auth-brand-name">
-            Photo<span>house</span>
+            Trip<span>house</span>
           </span>
         </div>
 

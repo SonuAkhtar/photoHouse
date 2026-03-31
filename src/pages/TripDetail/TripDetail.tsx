@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import "./TripDetail.css";
-
 import { motion, AnimatePresence } from "framer-motion";
 import Carousel from "../../components/Carousel/Carousel";
 import EditTripModal from "../../components/EditTripModal/EditTripModal";
 import { fetchTrip, deleteTrip, type ApiTrip } from "../../services/api";
 import { useToast } from "../../context/ToastContext";
+import "./TripDetail.css";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 

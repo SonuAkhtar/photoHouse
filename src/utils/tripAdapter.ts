@@ -1,10 +1,6 @@
 import type { ApiTrip } from "../services/api";
 import type { Trip } from "../data/trips";
 
-/**
- * Converts an API trip (from MongoDB) into the Trip shape expected
- * by existing components (TripCard, NavDots, Carousel, etc.)
- */
 export function apiTripToTrip(apiTrip: ApiTrip, index = 0): Trip {
   return {
     id: apiTrip.id,

@@ -1,41 +1,25 @@
-import { useEffect, useRef, useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Hero from "../../components/Hero/Hero";
 import Footer from "../../components/Footer/Footer";
 import TripCard from "../../components/TripCard/TripCard";
 import NavDots from "../../components/NavDots/NavDots";
-import { fetchTrips, type ApiTrip } from "../../services/api";
 import { apiTripToTrip } from "../../utils/tripAdapter";
-import "./Home.css";
+import { usePub } from "../../context/PublicProfileContext";
+import "../Home/Home.css";
 
 const FEATURED_COUNT = 6;
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-export default function Home() {
-  const [trips, setTrips] = useState<ApiTrip[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function PublicHome() {
+  const { trips: apiTrips, username } = usePub();
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
-  const loadTrips = useCallback(async () => {
-    try {
-      const { data } = await fetchTrips();
-      setTrips(data);
-    } catch (err) {
-      console.error("Failed to load trips:", err);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadTrips();
-  }, [loadTrips]);
-
-  const featured = trips.slice(0, FEATURED_COUNT);
+  const featured = apiTrips.slice(0, FEATURED_COUNT);
+  const linkBase = `/u/${username}/trip`;
+  const pubBase = `/u/${username}`;
 
   useEffect(() => {
     if (featured.length === 0) return;
@@ -57,7 +41,7 @@ export default function Home() {
     cardRefs.current[i]?.scrollIntoView({ behavior: "smooth" });
   };
 
-  if (!loading && trips.length === 0) {
+  if (apiTrips.length === 0) {
     return (
       <div className="home">
         <Hero count={0} />
@@ -67,17 +51,13 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <p className="home-empty_eyebrow">Your journal is empty</p>
-          <h2 className="home-empty_heading">Add your first memory</h2>
+          <p className="home-empty_eyebrow">No journeys yet</p>
+          <h2 className="home-empty_heading">Nothing to show here</h2>
           <p className="home-empty_body">
-            Use the <strong>+ Add Memory</strong> button in the header to upload
-            photos from your travels.
+            This traveller hasn't added any trips yet.
           </p>
-          <button className="home-empty_cta" onClick={() => navigate("/trips")}>
-            Explore all trips →
-          </button>
         </motion.div>
-        <Footer trips={trips} />
+        <Footer trips={[]} publicBase={pubBase} />
       </div>
     );
   }
@@ -93,25 +73,20 @@ export default function Home() {
       )}
 
       <div className="home" ref={containerRef}>
-        <Hero count={trips.length} />
+        <Hero count={apiTrips.length} />
 
-        {loading ? (
-          <div className="home-loading">
-            <span className="auth-loading-spinner" />
-          </div>
-        ) : (
-          featured.map((apiTrip, i) => (
-            <TripCard
-              key={apiTrip.id}
-              trip={apiTripToTrip(apiTrip, i)}
-              ref={(el) => {
-                cardRefs.current[i] = el;
-              }}
-            />
-          ))
-        )}
+        {featured.map((apiTrip, i) => (
+          <TripCard
+            key={apiTrip.id}
+            trip={apiTripToTrip(apiTrip, i)}
+            linkBase={linkBase}
+            ref={(el) => {
+              cardRefs.current[i] = el;
+            }}
+          />
+        ))}
 
-        <Footer trips={trips} />
+        <Footer trips={apiTrips} publicBase={pubBase} />
       </div>
     </>
   );

@@ -1,10 +1,8 @@
 import { useEffect, useRef } from "react";
-import "./Hero.css";
-
-// packages
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { trips } from "../../data/trips";
+import "./Hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,13 +25,10 @@ export default function Hero({ count }: HeroProps) {
     const section = sectionRef.current;
     if (!section) return;
 
-    // ----- Entry timeline ------------------------------------------------------------------------------------------------------------------------─
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
 
       tl.from(".hero__topbar", { y: -32, opacity: 0, duration: 1 }, 0.05)
-
-        // Letters stagger from below with clip
         .from(
           ".hero__ch",
           {
@@ -44,8 +39,6 @@ export default function Hero({ count }: HeroProps) {
           },
           0.2,
         )
-
-        // Rule line scaleX reveal
         .from(
           ".hero__rule",
           {
@@ -60,7 +53,6 @@ export default function Hero({ count }: HeroProps) {
         .from(".hero__tagline", { y: 22, opacity: 0, duration: 0.85 }, "-=0.6")
         .from(".hero__count", { y: 18, opacity: 0, duration: 0.7 }, "-=0.45")
 
-        // Photos — clip wipe from right + slight scale
         .from(
           ".hero__photo--1",
           {
@@ -98,7 +90,6 @@ export default function Hero({ count }: HeroProps) {
         .from(".hero__scroll", { opacity: 0, y: 16, duration: 0.7 }, "-=0.25")
         .from(".hero__marquee-wrap", { opacity: 0, duration: 1.0 }, "-=0.35");
 
-      // ----- ScrollTrigger parallax ------------------------------------------------------------------------------------------─
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
@@ -113,7 +104,6 @@ export default function Hero({ count }: HeroProps) {
       });
     }, sectionRef);
 
-    // ----- Mouse parallax + spotlight --------------------------------------------------------------------------------─
     const photos = [photo1Ref.current!, photo2Ref.current!, photo3Ref.current!];
     const depthsX = [-22, 14, -10];
     const depthsY = [-16, 20, 12];
@@ -131,7 +121,6 @@ export default function Hero({ count }: HeroProps) {
       mouse.x = (e.clientX - rect.left) / rect.width - 0.5;
       mouse.y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      // Cursor spotlight via CSS custom properties
       section.style.setProperty(
         "--cx",
         `${((e.clientX - rect.left) / rect.width) * 100}%`,
@@ -154,7 +143,6 @@ export default function Hero({ count }: HeroProps) {
 
     window.addEventListener("mousemove", onMove);
 
-    // ----- 3D tilt on photo hover ------------------------------------------------------------------------------------------─
     photos.forEach((photo) => {
       const onPhotoMove = (e: MouseEvent) => {
         const r = photo.getBoundingClientRect();
@@ -218,18 +206,15 @@ export default function Hero({ count }: HeroProps) {
       <div className="hero__glow" aria-hidden="true" />
       <div className="hero__spotlight" aria-hidden="true" />
 
-      {/* ----- Top bar ----- */}
       <div className="hero__topbar">
         <span className="hero__label">A visual archive</span>
         <span className="hero__label hero__label--right">Est. 2023</span>
       </div>
 
-      {/* ----- Central layout ----- */}
       <div className="hero__body">
-        {/* Text column */}
         <div className="hero__text-col">
-          <div className="hero__wordmark" aria-label="Photo House">
-            {["PHOTO", "HOUSE"].map((word, wi) => (
+          <div className="hero__wordmark" aria-label="Trip House">
+            {["TRIP", "HOUSE"].map((word, wi) => (
               <div key={wi} className="hero__line">
                 {word.split("").map((ch, li) => (
                   <span key={`${wi}-${li}`} className="hero__ch">
@@ -260,7 +245,6 @@ export default function Hero({ count }: HeroProps) {
           </div>
         </div>
 
-        {/* Photo collage */}
         <div className="hero__collage">
           <div ref={photo1Ref} className="hero__photo hero__photo--1">
             <img
@@ -294,13 +278,11 @@ export default function Hero({ count }: HeroProps) {
         </div>
       </div>
 
-      {/* ----- Scroll indicator ----- */}
       <div className="hero__scroll" aria-hidden="true">
         <div className="hero__scroll-line" />
         <span className="hero__scroll-text">Scroll</span>
       </div>
 
-      {/* ----- Marquee strip ----- */}
       <div className="hero__marquee-wrap" aria-hidden="true">
         <div className="hero__marquee-track">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map(

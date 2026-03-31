@@ -201,7 +201,6 @@
   font-size: 26px;
 }
 
-/* Gear tags per theme */
 [data-theme="bloom"] .about_gear-item:hover {
   background: rgba(196, 131, 106, 0.08);
   border-color: rgba(196, 131, 106, 0.4);

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import L from "leaflet";
-import { fetchTrips, type ApiTrip } from "../../services/api";
+import { usePub } from "../../context/PublicProfileContext";
+import type { ApiTrip } from "../../services/api";
 import "leaflet/dist/leaflet.css";
-import "./MapView.css";
+import "../MapView/MapView.css";
 
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)
   ._getIconUrl;
@@ -80,7 +81,6 @@ const COORDS: Record<string, [number, number]> = {
   china: [35.86, 104.19],
   mumbai: [19.07, 72.87],
   india: [20.59, 78.96],
-  dubai: [25.2, 55.27],
   maldives: [3.2, 73.22],
   iceland: [64.96, -19.02],
   reykjavik: [64.13, -21.89],
@@ -122,15 +122,8 @@ function getCoords(trip: ApiTrip): [number, number] | null {
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-export default function MapView() {
-  const [trips, setTrips] = useState<ApiTrip[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchTrips()
-      .then(({ data }) => setTrips(data))
-      .finally(() => setLoading(false));
-  }, []);
+export default function PublicMapView() {
+  const { trips, username } = usePub();
 
   const mapped = trips
     .map((t) => ({ trip: t, coords: getCoords(t) }))
@@ -150,7 +143,7 @@ export default function MapView() {
           transition={{ duration: 0.6, ease }}
         >
           <p className="map-page_eyebrow">World map</p>
-          <h1 className="map-page_heading">Your Footprint</h1>
+          <h1 className="map-page_heading">Footprint</h1>
         </motion.div>
         <motion.span
           className="map-page_count"
@@ -158,54 +151,56 @@ export default function MapView() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          {loading ? "—" : `${mapped.length} pinned`}
+          {`${mapped.length} pinned`}
         </motion.span>
       </div>
 
-      {loading ? (
-        <div className="map-loading">
-          <span className="auth-loading-spinner" />
-        </div>
-      ) : (
-        <motion.div
-          className="map-wrap"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.1, ease }}
+      <motion.div
+        className="map-wrap"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.1, ease }}
+      >
+        <MapContainer
+          center={[20, 10]}
+          zoom={2}
+          className="map-container"
+          scrollWheelZoom
         >
-          <MapContainer
-            center={[20, 10]}
-            zoom={2}
-            className="map-container"
-            scrollWheelZoom
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            />
-            {mapped.map(({ trip, coords }) => (
-              <Marker key={trip.id} position={coords}>
-                <Popup className="map-popup">
-                  <div className="map-popup_inner">
-                    <img
-                      src={trip.cover}
-                      alt={trip.place}
-                      className="map-popup_img"
-                    />
-                    <div className="map-popup_body">
-                      <p className="map-popup_region">{trip.region}</p>
-                      <strong className="map-popup_place">{trip.place}</strong>
-                      <p className="map-popup_dates">{trip.dates}</p>
-                    </div>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          />
+          {mapped.map(({ trip, coords }) => (
+            <Marker key={trip.id} position={coords}>
+              <Popup className="map-popup">
+                <Link
+                  to={`/u/${username}/trip/${trip.id}`}
+                  className="map-popup_inner"
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    gap: "0.75rem",
+                  }}
+                >
+                  <img
+                    src={trip.cover}
+                    alt={trip.place}
+                    className="map-popup_img"
+                  />
+                  <div className="map-popup_body">
+                    <p className="map-popup_region">{trip.region}</p>
+                    <strong className="map-popup_place">{trip.place}</strong>
+                    <p className="map-popup_dates">{trip.dates}</p>
                   </div>
-                </Popup>
-              </Marker>
-            ))}
-          </MapContainer>
-        </motion.div>
-      )}
+                </Link>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      </motion.div>
 
-      {!loading && unmapped.length > 0 && (
+      {unmapped.length > 0 && (
         <motion.div
           className="map-unmapped"
           initial={{ opacity: 0, y: 12 }}

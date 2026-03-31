@@ -1,49 +1,32 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, themeList } from "../../context/ThemeContext";
-import { useAuth } from "../../context/AuthContext";
-import UploadModal from "../UploadModal/UploadModal";
-import type { ApiTrip } from "../../services/api";
-import "./SiteHeader.css";
+import { usePub } from "../../context/PublicProfileContext";
+import "../SiteHeader/SiteHeader.css";
 
-const navLinks = [
-  { label: "All Trips", href: "/trips" },
-  { label: "Map", href: "/map" },
-  { label: "Stats", href: "/stats" },
-  { label: "About Me", href: "/about" },
-  { label: "Interests", href: "/interests" },
-];
-
-interface Props {
-  onTripCreated?: (trip: ApiTrip) => void;
-}
-
-export default function SiteHeader({ onTripCreated }: Props) {
+export default function PublicSiteHeader() {
   const { theme, setTheme } = useTheme();
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const { username, user } = usePub();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [uploadOpen, setUploadOpen] = useState(false);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
-  const userRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const active = themeList.find((t) => t.id === theme)!;
+  const base = `/u/${username}`;
+
+  const navLinks = [
+    { label: "All Trips", href: `${base}/trips` },
+    { label: "Map", href: `${base}/map` },
+    { label: "Stats", href: `${base}/stats` },
+    { label: "About Me", href: `${base}/about` },
+    { label: "Interests", href: `${base}/interests` },
+  ];
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (!pickerRef.current?.contains(e.target as Node)) setPickerOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
-
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (!userRef.current?.contains(e.target as Node)) setUserMenuOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -54,7 +37,6 @@ export default function SiteHeader({ onTripCreated }: Props) {
     prevPathRef.current = location.pathname;
     setMobileOpen(false);
     setPickerOpen(false);
-    setUserMenuOpen(false);
   }
 
   useEffect(() => {
@@ -64,16 +46,11 @@ export default function SiteHeader({ onTripCreated }: Props) {
     };
   }, [mobileOpen]);
 
-  const handleTripCreated = (trip: ApiTrip) => {
-    setUploadOpen(false);
-    onTripCreated?.(trip);
-  };
-
   return (
     <>
       <header className="site-header">
         <Link
-          to="/"
+          to={base}
           className="site-header_logo"
           aria-label="Trip House — home"
         >
@@ -161,27 +138,6 @@ export default function SiteHeader({ onTripCreated }: Props) {
         </nav>
 
         <div className="site-header_controls">
-          <button
-            className="site-header_add-btn"
-            onClick={() => setUploadOpen(true)}
-            aria-label="Add a memory"
-            title="Add a memory"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              aria-hidden="true"
-            >
-              <line x1="7" y1="1" x2="7" y2="13" />
-              <line x1="1" y1="7" x2="13" y2="7" />
-            </svg>
-            <span className="site-header_add-label">Add Memory</span>
-          </button>
-
           <div className="site-header_right" ref={pickerRef}>
             <button
               className="site-header_theme-btn"
@@ -248,66 +204,14 @@ export default function SiteHeader({ onTripCreated }: Props) {
             </AnimatePresence>
           </div>
 
-          {user && (
-            <div
-              className="site-header_user-wrap"
-              ref={userRef}
-              style={{ position: "relative" }}
-            >
-              <button
-                className="site-header_user-btn"
-                onClick={() => setUserMenuOpen((o) => !o)}
-                aria-label="Account menu"
-                aria-expanded={userMenuOpen}
-                title={user.name}
-              >
-                {(user.name?.charAt(0) || "?").toUpperCase()}
-              </button>
-
-              <AnimatePresence>
-                {userMenuOpen && (
-                  <motion.div
-                    className="user-menu"
-                    initial={{ opacity: 0, y: -8, scaleY: 0.94 }}
-                    animate={{ opacity: 1, y: 0, scaleY: 1 }}
-                    exit={{ opacity: 0, y: -8, scaleY: 0.94 }}
-                    transition={{
-                      duration: 0.18,
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                    }}
-                    style={{ transformOrigin: "top right" }}
-                  >
-                    <div className="user-menu_info">
-                      <p className="user-menu_name">{user.name}</p>
-                      <p className="user-menu_email">{user.email}</p>
-                    </div>
-                    <div className="user-menu_divider" />
-                    <button
-                      className="user-menu_logout"
-                      onClick={() => {
-                        setUserMenuOpen(false);
-                        navigate("/profile");
-                      }}
-                    >
-                      Profile &amp; Settings
-                    </button>
-                    <div className="user-menu_divider" />
-                    <button
-                      className="user-menu_logout"
-                      style={{ color: "#e05c5c" }}
-                      onClick={() => {
-                        setUserMenuOpen(false);
-                        logout();
-                        navigate("/login");
-                      }}
-                    >
-                      Sign out
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          )}
+          <div
+            className="site-header_user-btn"
+            style={{ pointerEvents: "none" }}
+            title={user.name}
+            aria-label={user.name}
+          >
+            {(user.name?.charAt(0) || "?").toUpperCase()}
+          </div>
 
           <button
             className="site-header_burger"
@@ -355,25 +259,6 @@ export default function SiteHeader({ onTripCreated }: Props) {
                   </Link>
                 </motion.div>
               ))}
-
-              <motion.div
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  delay: 0.1 + navLinks.length * 0.07,
-                  duration: 0.4,
-                }}
-              >
-                <button
-                  className="mobile-menu_add-btn"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    setUploadOpen(true);
-                  }}
-                >
-                  + Add Memory
-                </button>
-              </motion.div>
             </nav>
 
             <div className="mobile-menu_themes">
@@ -403,30 +288,20 @@ export default function SiteHeader({ onTripCreated }: Props) {
               </div>
             </div>
 
-            {user && (
-              <div className="mobile-menu_user">
-                <p className="mobile-menu_user-name">{user.name}</p>
-                <button
-                  className="mobile-menu_logout"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    navigate("/profile");
-                  }}
-                >
-                  Profile & Settings
-                </button>
-              </div>
-            )}
+            <div className="mobile-menu_user">
+              <p className="mobile-menu_user-name">{user.name}</p>
+              <p
+                style={{
+                  fontSize: "11px",
+                  color: "var(--text-faint)",
+                  fontFamily: "var(--font-mono)",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                @{username}
+              </p>
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {uploadOpen && (
-          <UploadModal
-            onClose={() => setUploadOpen(false)}
-            onCreated={handleTripCreated}
-          />
         )}
       </AnimatePresence>
     </>

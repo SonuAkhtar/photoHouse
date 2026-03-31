@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef, type WheelEvent } from "react";
-import "./Lightbox.css";
-
-// packages
 import { motion, AnimatePresence } from "framer-motion";
+import "./Lightbox.css";
 
 interface LightboxProps {
   src: string;

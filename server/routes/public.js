@@ -5,6 +5,24 @@ const Profile = require("../models/Profile");
 
 const router = express.Router();
 
+router.get("/:username/trips/:tripId", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      username: req.params.username.toLowerCase(),
+    });
+    if (!user) return res.status(404).json({ message: "Profile not found" });
+    const trip = await Trip.findOne({
+      _id: req.params.tripId,
+      userId: user._id,
+    });
+    if (!trip) return res.status(404).json({ message: "Trip not found" });
+    res.json(trip);
+  } catch (err) {
+    console.error("Public trip error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 router.get("/:username", async (req, res) => {
   try {
     const user = await User.findOne({

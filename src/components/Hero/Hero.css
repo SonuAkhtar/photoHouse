@@ -7,12 +7,10 @@
   overflow: hidden;
   background: var(--bg);
   transition: background-color 0.5s ease;
-  /* Cursor spotlight position */
   --cx: 72%;
   --cy: 42%;
 }
 
-/* ── Grain texture ── */
 .hero__grain {
   position: absolute;
   inset: 0;
@@ -24,7 +22,6 @@
   background-size: 200px 200px;
 }
 
-/* ── Ambient glow (theme-driven) ── */
 .hero__glow {
   position: absolute;
   inset: 0;
@@ -38,7 +35,6 @@
   z-index: 0;
 }
 
-/* ── Interactive cursor spotlight ── */
 .hero__spotlight {
   position: absolute;
   inset: 0;
@@ -57,7 +53,6 @@
   opacity: 1;
 }
 
-/* ── Top bar ── */
 .hero__topbar {
   position: absolute;
   top: 40px;
@@ -79,7 +74,6 @@
   transition: color 0.4s ease;
 }
 
-/* ── Body (main content row) ── */
 .hero__body {
   flex: 1;
   display: flex;
@@ -91,7 +85,6 @@
   margin-top: 20px;
 }
 
-/* ── Text column ── */
 .hero__text-col {
   display: flex;
   flex-direction: column;
@@ -99,7 +92,6 @@
   max-width: 56%;
 }
 
-/* ── Wordmark ── */
 .hero__wordmark {
   display: flex;
   flex-direction: column;
@@ -108,8 +100,6 @@
 
 .hero__line {
   display: flex;
-  /* Clip the bottom (where animated letters enter from) but not the top,
-     so tall glyphs aren't cut off by the tight line-height. */
   clip-path: inset(-0.15em 0 0 0);
 }
 
@@ -124,7 +114,6 @@
   will-change: transform;
 }
 
-/* ── Subtitle block ── */
 .hero__sub {
   display: flex;
   align-items: flex-start;
@@ -151,7 +140,6 @@
   transition: color 0.4s ease;
 }
 
-/* ── Journey count ── */
 .hero__count {
   display: flex;
   align-items: baseline;
@@ -181,7 +169,6 @@
   transition: color 0.4s ease;
 }
 
-/* ── Photo collage ── */
 .hero__collage {
   position: relative;
   width: 380px;
@@ -198,7 +185,6 @@
   will-change: transform;
   transform-style: preserve-3d;
   cursor: pointer;
-  /* Shadow lifted on hover */
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.18),
     0 1px 4px rgba(0, 0, 0, 0.12);
@@ -225,7 +211,6 @@
   transform: scale(1.05);
 }
 
-/* Sheen overlay — sweeps left-to-right on hover */
 .hero__photo-sheen {
   position: absolute;
   inset: 0;
@@ -279,7 +264,6 @@
   right: 28px;
 }
 
-/* ── Scroll indicator ── */
 .hero__scroll {
   position: absolute;
   bottom: 56px;
@@ -321,7 +305,6 @@
   color: var(--text-faint);
 }
 
-/* ── Marquee strip ── */
 .hero__marquee-wrap {
   position: absolute;
   bottom: 0;

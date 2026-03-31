@@ -45,6 +45,9 @@ export const saveProfile = (data: Partial<ApiProfile>) =>
 export const fetchPublicProfile = (username: string) =>
   api.get<PublicProfileResponse>(`/public/${username}`);
 
+export const fetchPublicTrip = (username: string, tripId: string) =>
+  api.get<ApiTrip>(`/public/${username}/trips/${tripId}`);
+
 export interface ApiPhoto {
   url: string;
   caption: string;

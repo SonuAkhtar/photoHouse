@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import "./FullscreenGallery.css";
-
 import type { Photo } from "../../data/trips";
+import "./FullscreenGallery.css";
 
 interface Props {
   photos: Photo[];

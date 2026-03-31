@@ -1,16 +1,16 @@
 import { useEffect, useState, type FormEvent, type KeyboardEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Profile.css";
-
 import { motion } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
 import {
   fetchProfile,
   saveProfile,
   fetchTrips,
+  type ApiProfile,
   type ApiInterest,
   type ApiTrip,
 } from "../../services/api";
+import "./Profile.css";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 const fadeUp = (delay = 0) => ({
@@ -19,13 +19,10 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.65, delay, ease },
 });
 
-// ----- Stat helpers -----------------------------------------------------------------------------------------------------------------------------------------------------------
-
 function computeStats(trips: ApiTrip[]) {
   const destinations = trips.length;
   const totalPhotos = trips.reduce((s, t) => s + t.photos.length, 0);
 
-  // Extract 4-digit years from all date strings, find the earliest
   const years = trips
     .map((t) => t.dates.match(/\d{4}/)?.[0])
     .filter(Boolean)
@@ -36,8 +33,6 @@ function computeStats(trips: ApiTrip[]) {
 
   return { destinations, totalPhotos, yearsShooting };
 }
-
-// ----- Component ----------------------------------------------------------------------------------------------------------------------------------------------------------------─
 
 export default function Profile() {
   const { user, logout } = useAuth();
@@ -53,9 +48,9 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
 
-  // Fetch profile + trips in parallel
   useEffect(() => {
     Promise.all([fetchProfile(), fetchTrips()])
       .then(([{ data: prof }, { data: trps }]) => {
@@ -70,8 +65,6 @@ export default function Profile() {
   }, []);
 
   const stats = computeStats(trips);
-
-  // ----- Gear ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   const addGear = () => {
     const val = gearInput.trim();
@@ -90,8 +83,6 @@ export default function Profile() {
   const removeGear = (item: string) =>
     setGear((prev) => prev.filter((g) => g !== item));
 
-  // ----- Interests ------------------------------------------------------------------------------------------------------------------------------------------------------─
-
   const addInterest = () =>
     setInterests((prev) => [
       ...prev,
@@ -105,8 +96,6 @@ export default function Profile() {
 
   const removeInterest = (id: string) =>
     setInterests((prev) => prev.filter((it) => it.id !== id));
-
-  // ----- Save ----------------------------------------------------------------------------------------------------------------------------------------------------------------─
 
   const handleSave = async (e: FormEvent) => {
     e.preventDefault();
@@ -129,6 +118,14 @@ export default function Profile() {
     navigate("/login");
   };
 
+  const handleCopyLink = () => {
+    const url = `${window.location.origin}/u/${user?.username}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   if (loading) {
     return (
       <div className="profile-loading">
@@ -140,7 +137,6 @@ export default function Profile() {
   return (
     <main className="profile">
       <div className="profile_inner">
-        {/* ----- Page header ----- */}
         <motion.div className="profile_head" {...fadeUp(0.05)}>
           <div>
             <p className="profile_eyebrow">Account</p>
@@ -148,6 +144,9 @@ export default function Profile() {
             <p className="profile_email">{user?.email}</p>
           </div>
           <div className="profile_head-actions">
+            <button className="profile_share-btn" onClick={handleCopyLink}>
+              {copied ? "Link copied!" : "Share profile"}
+            </button>
             <button className="profile_logout-btn" onClick={handleLogout}>
               Sign out
             </button>
@@ -156,7 +155,6 @@ export default function Profile() {
 
         <motion.div className="profile_divider" {...fadeUp(0.15)} />
 
-        {/* ----- Live stats (read-only, computed from trips) ----- */}
         <motion.div className="profile_stats-row" {...fadeUp(0.2)}>
           <p className="profile_section-label">Your stats</p>
           <div className="profile_stats">
@@ -188,7 +186,6 @@ export default function Profile() {
             </p>
           )}
 
-          {/* ----- Bio ----- */}
           <motion.div className="profile_section" {...fadeUp(0.28)}>
             <p className="profile_section-label">About me</p>
             <textarea
@@ -203,7 +200,6 @@ export default function Profile() {
             </p>
           </motion.div>
 
-          {/* ----- Quote ----- */}
           <motion.div className="profile_section" {...fadeUp(0.34)}>
             <p className="profile_section-label">Favourite quote</p>
             <input
@@ -215,7 +211,6 @@ export default function Profile() {
             />
           </motion.div>
 
-          {/* ----- Gear ----- */}
           <motion.div className="profile_section" {...fadeUp(0.4)}>
             <p className="profile_section-label">Current kit</p>
             <div className="profile_gear-tags">
@@ -255,7 +250,6 @@ export default function Profile() {
             </p>
           </motion.div>
 
-          {/* ----- Interests ----- */}
           <motion.div className="profile_section" {...fadeUp(0.46)}>
             <div className="profile_section-head">
               <p className="profile_section-label">Interests</p>
@@ -318,7 +312,6 @@ export default function Profile() {
             </div>
           </motion.div>
 
-          {/* ----- Save bar ----- */}
           <motion.div className="profile_save-bar" {...fadeUp(0.5)}>
             {saved && (
               <span className="profile_saved-msg">Changes saved ✓</span>

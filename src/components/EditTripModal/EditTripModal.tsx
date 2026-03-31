@@ -1,10 +1,8 @@
 import { useState, type FormEvent, type KeyboardEvent } from "react";
-import "./EditTripModal.css";
-
-// packages
 import { motion } from "framer-motion";
 import { updateTrip, type ApiTrip } from "../../services/api";
 import { useToast } from "../../context/ToastContext";
+import "./EditTripModal.css";
 
 interface Props {
   trip: ApiTrip;

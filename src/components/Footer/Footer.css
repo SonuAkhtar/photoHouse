@@ -11,7 +11,6 @@
     border-color 0.45s ease;
 }
 
-/* ── Marquee ── */
 .page-footer_marquee {
   flex-shrink: 0;
   overflow: hidden;
@@ -35,7 +34,6 @@
   transition: color 0.4s ease;
 }
 
-/* ── Three-column grid ── */
 .page-footer_grid {
   flex: 1;
   display: grid;
@@ -45,7 +43,6 @@
   min-height: 0;
 }
 
-/* Left — brand + instagram */
 .page-footer_brand {
   display: flex;
   flex-direction: column;
@@ -102,7 +99,6 @@
   transform: translate(2px, -2px);
 }
 
-/* Center — trip index */
 .page-footer_index {
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
@@ -190,7 +186,6 @@
   margin: 0;
 }
 
-/* Right — site nav */
 .page-footer_side {
   padding-left: 40px;
   display: flex;
@@ -228,7 +223,6 @@
   padding-left: 6px;
 }
 
-/* ── Bottom bar ── */
 .page-footer_bar {
   flex-shrink: 0;
   display: flex;
@@ -246,14 +240,12 @@
   transition: color 0.4s ease;
 }
 
-/* Bloom — warm */
 [data-theme="bloom"] .page-footer_instagram:hover {
   background: rgba(196, 131, 106, 0.08);
   border-color: rgba(196, 131, 106, 0.4);
   color: var(--text);
 }
 
-/* Coastal — pill */
 [data-theme="coastal"] .page-footer_instagram {
   font-weight: 600;
   padding: 10px 22px;
@@ -264,7 +256,6 @@
   color: var(--text);
 }
 
-/* Tokyo — neon glow */
 [data-theme="tokyo"] .page-footer_instagram:hover {
   background: rgba(255, 77, 109, 0.08);
   border-color: rgba(255, 77, 109, 0.4);
@@ -272,7 +263,6 @@
   box-shadow: var(--btn-shadow);
 }
 
-/* Film — gold */
 [data-theme="film"] .page-footer_instagram:hover {
   background: rgba(200, 169, 110, 0.08);
   border-color: rgba(200, 169, 110, 0.4);
@@ -309,14 +299,12 @@
 }
 
 @media (max-width: 768px) {
-  /* ── Remove snap + fixed height so footer scrolls naturally ── */
   .page-footer {
     height: auto;
     overflow: visible;
     scroll-snap-align: unset;
   }
 
-  /* ── Show only 5 recent trips (index-label is child 1, trips are 2–N) ── */
   .page-footer_index > .page-footer_trip:nth-child(n + 7) {
     display: none;
   }

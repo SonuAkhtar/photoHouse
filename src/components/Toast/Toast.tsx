@@ -1,7 +1,6 @@
-import "./Toast.css";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { useToast } from "../../context/ToastContext";
+import "./Toast.css";
 
 export default function ToastStack() {
   const { toasts, dismiss } = useToast();

@@ -27,7 +27,6 @@ userSchema.pre("save", function (next) {
     const base = this.name.toLowerCase().replace(/[^a-z0-9]/g, "");
     this.username = base + Math.floor(1000 + Math.random() * 9000);
   }
-
   next();
 });
 

@@ -1,9 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
-
 import { useAuth } from "../../context/AuthContext";
 import { loginUser } from "../../services/api";
+import "./Login.css";
 
 export default function Login() {
   const { login } = useAuth();
@@ -104,7 +103,7 @@ export default function Login() {
             />
           </svg>
           <span className="auth-brand-name">
-            Photo<span>house</span>
+            Trip<span>house</span>
           </span>
         </div>
 
@@ -159,7 +158,7 @@ export default function Login() {
         </form>
 
         <p className="auth-switch">
-          New to Photo House?{" "}
+          New to Trip House?{" "}
           <Link to="/signup" className="auth-switch-link">
             Create an account
           </Link>

@@ -1,13 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  fetchProfile,
-  fetchTrips,
-  type ApiProfile,
-  type ApiTrip,
-} from "../../services/api";
-import "./About.css";
+import { usePub } from "../../context/PublicProfileContext";
+import type { ApiTrip } from "../../services/api";
+import "../About/About.css";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -30,29 +24,18 @@ function computeStats(trips: ApiTrip[]) {
   return { destinations, totalPhotos, yearsShooting };
 }
 
-export default function About() {
-  const [profile, setProfile] = useState<ApiProfile | null>(null);
-  const [trips, setTrips] = useState<ApiTrip[]>([]);
-
-  useEffect(() => {
-    Promise.all([fetchProfile(), fetchTrips()])
-      .then(([{ data: prof }, { data: trps }]) => {
-        setProfile(prof);
-        setTrips(trps);
-      })
-      .catch(console.error);
-  }, []);
-
+export default function PublicAbout() {
+  const { trips, profile } = usePub();
   const stats = computeStats(trips);
 
-  const bioParagraphs = (profile?.bio || "")
+  const bioParagraphs = (profile.bio || "")
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
 
   const hasBio = bioParagraphs.length > 0;
-  const hasQuote = profile?.quote?.trim();
-  const hasGear = (profile?.gear?.length ?? 0) > 0;
+  const hasQuote = profile.quote?.trim();
+  const hasGear = (profile.gear?.length ?? 0) > 0;
 
   const statItems = [
     {
@@ -96,13 +79,7 @@ export default function About() {
                 </p>
               ))
             ) : (
-              <p className="about_bio about_bio-empty">
-                Add a bio on your{" "}
-                <Link to="/profile" className="about_profile-link">
-                  profile page
-                </Link>{" "}
-                to have it appear here.
-              </p>
+              <p className="about_bio about_bio-empty">No bio added yet.</p>
             )}
           </motion.div>
 
@@ -118,7 +95,7 @@ export default function About() {
 
         {hasQuote && (
           <motion.blockquote className="about_quote" {...fadeUp(0.64)}>
-            "{profile!.quote}"
+            "{profile.quote}"
           </motion.blockquote>
         )}
 
@@ -126,23 +103,13 @@ export default function About() {
           <motion.div className="about_gear" {...fadeUp(0.76)}>
             <p className="about_gear-label">Current kit</p>
             <div className="about_gear-list">
-              {profile!.gear.map((item) => (
+              {profile.gear.map((item) => (
                 <span key={item} className="about_gear-item">
                   {item}
                 </span>
               ))}
             </div>
           </motion.div>
-        )}
-
-        {!hasQuote && !hasGear && (
-          <motion.p className="about_setup-hint" {...fadeUp(0.64)}>
-            Complete your{" "}
-            <Link to="/profile" className="about_profile-link">
-              profile
-            </Link>{" "}
-            to add a quote and your gear kit.
-          </motion.p>
         )}
       </div>
     </main>

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { fetchTrips, type ApiTrip } from "../../services/api";
-import "./Stats.css";
+import { usePub } from "../../context/PublicProfileContext";
+import type { ApiTrip } from "../../services/api";
+import "../Stats/Stats.css";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 const fadeUp = (delay = 0) => ({
@@ -39,14 +39,12 @@ function getStats(trips: ApiTrip[]) {
     ([a], [b]) => Number(a) - Number(b),
   );
   const maxPerYear = Math.max(...yearList.map(([, n]) => n), 1);
-
   const regionList = Object.entries(regions)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 6);
   const tagList = Object.entries(tagCounts)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 8);
-
   const currentYear = new Date().getFullYear();
   const firstYear = years.length ? Math.min(...years.map(Number)) : currentYear;
   const yearsShooting = Math.max(1, currentYear - firstYear);
@@ -61,16 +59,8 @@ function getStats(trips: ApiTrip[]) {
   };
 }
 
-export default function Stats() {
-  const [trips, setTrips] = useState<ApiTrip[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchTrips()
-      .then(({ data }) => setTrips(data))
-      .finally(() => setLoading(false));
-  }, []);
-
+export default function PublicStats() {
+  const { trips } = usePub();
   const stats = getStats(trips);
 
   return (
@@ -80,17 +70,13 @@ export default function Stats() {
           By the numbers
         </motion.p>
         <motion.h1 className="stats-page_heading" {...fadeUp(0.15)}>
-          Your Journey Stats
+          Journey Stats
         </motion.h1>
         <motion.div className="stats-page_divider" {...fadeUp(0.25)} />
 
-        {loading ? (
-          <div className="stats-loading">
-            <span className="auth-loading-spinner" />
-          </div>
-        ) : trips.length === 0 ? (
+        {trips.length === 0 ? (
           <motion.p className="stats-empty" {...fadeUp(0.3)}>
-            No trips yet — upload your first memory to start seeing stats.
+            No trips yet.
           </motion.p>
         ) : (
           <>
@@ -111,9 +97,7 @@ export default function Stats() {
               </div>
               <div className="stats-card">
                 <span className="stats-card_value">
-                  {Object.keys(stats.regionList).length > 0
-                    ? stats.regionList.length
-                    : "—"}
+                  {stats.regionList.length > 0 ? stats.regionList.length : "—"}
                 </span>
                 <span className="stats-card_label">Countries visited</span>
               </div>

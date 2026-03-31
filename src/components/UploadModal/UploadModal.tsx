@@ -6,9 +6,8 @@ import {
   type FormEvent,
   type DragEvent,
 } from "react";
-import "./UploadModal.css";
-
 import { createTrip, type ApiTrip } from "../../services/api";
+import "./UploadModal.css";
 
 interface Props {
   onClose: () => void;
@@ -55,15 +54,12 @@ export default function UploadModal({ onClose, onCreated }: Props) {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Revoke all object URLs on unmount to prevent memory leaks
   useEffect(() => {
     return () => {
       photos.forEach((p) => URL.revokeObjectURL(p.preview));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // ----- File handling --------------------------------------------------------------------------------------------------------------------------------------------
 
   const addFiles = (files: FileList | null) => {
     if (!files || files.length === 0) return;
@@ -117,8 +113,6 @@ export default function UploadModal({ onClose, onCreated }: Props) {
     }
   };
 
-  // ----- Submit -----------------------------------------------------------------------------------------------------------------------------------------------------------─
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
@@ -169,7 +163,6 @@ export default function UploadModal({ onClose, onCreated }: Props) {
         aria-modal="true"
         aria-label="Add a memory"
       >
-        {/* Header */}
         <div className="upload-modal_head">
           <div>
             <h2 className="upload-modal_title">Add a memory</h2>
@@ -191,7 +184,6 @@ export default function UploadModal({ onClose, onCreated }: Props) {
             </p>
           )}
 
-          {/* ----- Trip details ----- */}
           <fieldset className="upload-modal_section">
             <legend className="upload-modal_section-title">Trip details</legend>
 
@@ -257,7 +249,6 @@ export default function UploadModal({ onClose, onCreated }: Props) {
               />
             </div>
 
-            {/* Accent color */}
             <div className="upload-modal_field">
               <label className="upload-modal_label">Accent colour</label>
               <div className="upload-modal_accent-row">
@@ -276,11 +267,9 @@ export default function UploadModal({ onClose, onCreated }: Props) {
             </div>
           </fieldset>
 
-          {/* ----- Photos ----- */}
           <fieldset className="upload-modal_section">
             <legend className="upload-modal_section-title">Photos</legend>
 
-            {/* Single / Multiple toggle */}
             <div className="upload-modal_mode-row">
               <button
                 type="button"
@@ -298,8 +287,17 @@ export default function UploadModal({ onClose, onCreated }: Props) {
               </button>
             </div>
 
-            {/* Drop zone */}
-            {(mode === "multiple" || photos.length === 0) && (
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              multiple={mode === "multiple"}
+              onChange={handleFileInput}
+              className="upload-modal_file-input"
+              tabIndex={-1}
+            />
+
+            {photos.length === 0 && (
               <div
                 className={`upload-modal_dropzone${dragging ? " upload-modal_dropzone-active" : ""}`}
                 onDragOver={(e) => {
@@ -339,19 +337,9 @@ export default function UploadModal({ onClose, onCreated }: Props) {
                   JPEG, PNG, WebP — up to 10 MB each
                   {mode === "multiple" ? " · up to 20 photos" : " · 1 photo"}
                 </p>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  multiple={mode === "multiple"}
-                  onChange={handleFileInput}
-                  className="upload-modal_file-input"
-                  tabIndex={-1}
-                />
               </div>
             )}
 
-            {/* Photo previews */}
             {photos.length > 0 && (
               <div className="upload-modal_previews">
                 {photos.map((p, i) => (
@@ -384,7 +372,6 @@ export default function UploadModal({ onClose, onCreated }: Props) {
                   </div>
                 ))}
 
-                {/* Add more button for multiple mode */}
                 {mode === "multiple" && photos.length < 20 && (
                   <button
                     type="button"
@@ -399,7 +386,6 @@ export default function UploadModal({ onClose, onCreated }: Props) {
             )}
           </fieldset>
 
-          {/* Actions */}
           <div className="upload-modal_actions">
             <button
               type="button"
