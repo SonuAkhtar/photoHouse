@@ -55,7 +55,7 @@ export default function Interests() {
               <Link to="/profile" className="interests_profile-link">
                 profile page
               </Link>{" "}
-              to add your areas of interest — they'll appear here in the same
+              to add your areas of interest - they'll appear here in the same
               card format.
             </p>
           </motion.div>

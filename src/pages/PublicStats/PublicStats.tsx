@@ -97,7 +97,7 @@ export default function PublicStats() {
               </div>
               <div className="stats-card">
                 <span className="stats-card_value">
-                  {stats.regionList.length > 0 ? stats.regionList.length : "—"}
+                  {stats.regionList.length > 0 ? stats.regionList.length : "-"}
                 </span>
                 <span className="stats-card_label">Countries visited</span>
               </div>

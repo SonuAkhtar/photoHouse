@@ -227,7 +227,7 @@ export default function Hero({ count }: HeroProps) {
           <div className="hero__sub">
             <div className="hero__rule" />
             <p className="hero__tagline">
-              A curated collection of journeys —<br />
+              A curated collection of journeys -<br />
               landscapes, light, and the in-between.
             </p>
           </div>

@@ -42,15 +42,15 @@ export default function PublicAbout() {
       value:
         stats.destinations > 0
           ? String(stats.destinations).padStart(2, "0")
-          : "—",
+          : "-",
       label: "Destinations",
     },
     {
-      value: stats.yearsShooting > 0 ? `${stats.yearsShooting}+` : "—",
+      value: stats.yearsShooting > 0 ? `${stats.yearsShooting}+` : "-",
       label: "Years shooting",
     },
     {
-      value: stats.totalPhotos > 0 ? `${stats.totalPhotos}+` : "—",
+      value: stats.totalPhotos > 0 ? `${stats.totalPhotos}+` : "-",
       label: "Frames kept",
     },
   ];

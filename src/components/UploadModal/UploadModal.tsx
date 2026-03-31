@@ -243,7 +243,7 @@ export default function UploadModal({ onClose, onCreated }: Props) {
                 className="upload-modal_textarea"
                 value={summary}
                 onChange={(e) => setSummary(e.target.value)}
-                placeholder="A few sentences about this journey — the light, the feeling, what made it memorable…"
+                placeholder="A few sentences about this journey - the light, the feeling, what made it memorable…"
                 rows={3}
                 required
               />
@@ -334,7 +334,7 @@ export default function UploadModal({ onClose, onCreated }: Props) {
                     : "Click or drag to add photos"}
                 </p>
                 <p className="upload-modal_drop-hint">
-                  JPEG, PNG, WebP — up to 10 MB each
+                  JPEG, PNG, WebP - up to 10 MB each
                   {mode === "multiple" ? " · up to 20 photos" : " · 1 photo"}
                 </p>
               </div>

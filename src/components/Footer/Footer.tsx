@@ -63,12 +63,12 @@ export default function Footer({ trips = [], publicBase }: Props) {
 
         <div className="page-footer_index">
           <p className="page-footer_index-label">
-            Journeys{trips.length > 0 ? ` — ${trips.length}` : ""}
+            Journeys{trips.length > 0 ? ` - ${trips.length}` : ""}
           </p>
 
           {trips.length === 0 ? (
             <p className="page-footer_empty">
-              No journeys yet — add your first memory.
+              No journeys yet - add your first memory.
             </p>
           ) : (
             trips.slice(0, 10).map((trip, i) => (

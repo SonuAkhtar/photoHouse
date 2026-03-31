@@ -165,13 +165,13 @@ export default function Profile() {
             </div>
             <div className="profile_stat">
               <span className="profile_stat-value">
-                {stats.yearsShooting > 0 ? `${stats.yearsShooting}+` : "—"}
+                {stats.yearsShooting > 0 ? `${stats.yearsShooting}+` : "-"}
               </span>
               <span className="profile_stat-label">Years shooting</span>
             </div>
             <div className="profile_stat">
               <span className="profile_stat-value">
-                {stats.totalPhotos > 0 ? `${stats.totalPhotos}+` : "—"}
+                {stats.totalPhotos > 0 ? `${stats.totalPhotos}+` : "-"}
               </span>
               <span className="profile_stat-label">Frames kept</span>
             </div>
@@ -267,7 +267,7 @@ export default function Profile() {
 
             {interests.length === 0 && (
               <p className="profile_empty-hint">
-                No interests yet — click "+ Add interest" to create your first
+                No interests yet - click "+ Add interest" to create your first
                 card.
               </p>
             )}

@@ -52,7 +52,7 @@ export default function PublicSiteHeader() {
         <Link
           to={base}
           className="site-header_logo"
-          aria-label="Trip House — home"
+          aria-label="Trip House - home"
         >
           <span className="site-header_logo-mark" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

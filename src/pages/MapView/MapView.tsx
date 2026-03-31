@@ -157,7 +157,7 @@ export default function MapView() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          {loading ? "—" : `${mapped.length} pinned`}
+          {loading ? "-" : `${mapped.length} pinned`}
         </motion.span>
       </div>
 

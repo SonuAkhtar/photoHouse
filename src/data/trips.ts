@@ -136,7 +136,7 @@ export const trips: Trip[] = [
     region: "Tensift · Morocco",
     dates: "November 3 – 9, 2023",
     summary:
-      "A labyrinth of souks, riads, and rooftop terraces painted in terracotta and saffron. The medina buzzes with centuries of trade and colour — an intoxicating sensory overload, in the best way.",
+      "A labyrinth of souks, riads, and rooftop terraces painted in terracotta and saffron. The medina buzzes with centuries of trade and colour - an intoxicating sensory overload, in the best way.",
     cover:
       "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1920&q=85",
     photos: [
@@ -202,7 +202,7 @@ export const trips: Trip[] = [
     region: "Dalmatia · Croatia",
     dates: "May 18 – 24, 2023",
     summary:
-      "The Pearl of the Adriatic, wrapped in medieval limestone walls. Terracotta rooftops, cobalt sea, and the echo of centuries — a city that earns every superlative.",
+      "The Pearl of the Adriatic, wrapped in medieval limestone walls. Terracotta rooftops, cobalt sea, and the echo of centuries - a city that earns every superlative.",
     cover: p("dubrovnik-cover", 1920, 1080),
     photos: [
       { url: p("dubrovnik-1"), caption: "Old town aerial from the walls" },
@@ -221,7 +221,7 @@ export const trips: Trip[] = [
     region: "Lesser Sunda · Indonesia",
     dates: "September 4 – 15, 2023",
     summary:
-      "Terraced rice paddies, incense-wrapped temples, and a spiritual calm that permeates even the busiest market. Bali moves to its own ancient rhythm — slow, intentional, sacred.",
+      "Terraced rice paddies, incense-wrapped temples, and a spiritual calm that permeates even the busiest market. Bali moves to its own ancient rhythm - slow, intentional, sacred.",
     cover:
       "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=85",
     photos: [
@@ -241,7 +241,7 @@ export const trips: Trip[] = [
     region: "Suðurland · Iceland",
     dates: "February 7 – 15, 2024",
     summary:
-      "A country that feels freshly sculpted — waterfalls tumbling from black cliffs, geysers splitting the silence, and the aurora borealis painting the sky in impossible green.",
+      "A country that feels freshly sculpted - waterfalls tumbling from black cliffs, geysers splitting the silence, and the aurora borealis painting the sky in impossible green.",
     cover:
       "https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=1920&q=85",
     photos: [
@@ -261,7 +261,7 @@ export const trips: Trip[] = [
     region: "Estremadura · Portugal",
     dates: "October 12 – 18, 2023",
     summary:
-      "Seven hills, yellow trams, and fado drifting from open windows. Lisbon wears its melancholy with grace — a sun-bleached city of azulejo tiles, seafaring ghosts, and the best pastéis in the world.",
+      "Seven hills, yellow trams, and fado drifting from open windows. Lisbon wears its melancholy with grace - a sun-bleached city of azulejo tiles, seafaring ghosts, and the best pastéis in the world.",
     cover: p("lisbon-cover", 1920, 1080),
     photos: [
       { url: p("lisbon-1"), caption: "Tram 28 climbing Alfama hill" },
@@ -280,7 +280,7 @@ export const trips: Trip[] = [
     region: "Marmara · Turkey",
     dates: "April 22 – 29, 2024",
     summary:
-      "Two continents, one city. The call to prayer echoes across the Bosphorus as ferries cut through morning mist. Istanbul is ancient and electric simultaneously — a city that refuses to be categorised.",
+      "Two continents, one city. The call to prayer echoes across the Bosphorus as ferries cut through morning mist. Istanbul is ancient and electric simultaneously - a city that refuses to be categorised.",
     cover:
       "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1920&q=85",
     photos: [
@@ -319,7 +319,7 @@ export const trips: Trip[] = [
     region: "Western Cape · South Africa",
     dates: "February 18 – 27, 2023",
     summary:
-      "Table Mountain as your backdrop, the Atlantic on one side and the Indian Ocean reaching to the other. Cape Town is audaciously beautiful — raw coastal geology meeting a city of staggering energy.",
+      "Table Mountain as your backdrop, the Atlantic on one side and the Indian Ocean reaching to the other. Cape Town is audaciously beautiful - raw coastal geology meeting a city of staggering energy.",
     cover:
       "https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=1920&q=85",
     photos: [
@@ -339,7 +339,7 @@ export const trips: Trip[] = [
     region: "Catalonia · Spain",
     dates: "July 5 – 12, 2023",
     summary:
-      "Gaudí's fever dreams made real in stone and tile. Barcelona is architecture as emotion — from Sagrada Família's soaring nave to the mosaic chaos of Park Güell, beauty here is unapologetically strange.",
+      "Gaudí's fever dreams made real in stone and tile. Barcelona is architecture as emotion - from Sagrada Família's soaring nave to the mosaic chaos of Park Güell, beauty here is unapologetically strange.",
     cover:
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1920&q=85",
     photos: [
@@ -359,7 +359,7 @@ export const trips: Trip[] = [
     region: "Bohemia · Czech Republic",
     dates: "March 3 – 9, 2023",
     summary:
-      "A Gothic fairy tale that survived the twentieth century intact. Cobblestone alleyways, Baroque spires, and the Charles Bridge in morning fog — Prague is the city that time forgot to ruin.",
+      "A Gothic fairy tale that survived the twentieth century intact. Cobblestone alleyways, Baroque spires, and the Charles Bridge in morning fog - Prague is the city that time forgot to ruin.",
     cover: p("prague-cover", 1920, 1080),
     photos: [
       { url: p("prague-1"), caption: "Old Town Square at dawn" },
@@ -398,7 +398,7 @@ export const trips: Trip[] = [
     region: "North Malé Atoll · Maldives",
     dates: "May 30 – June 7, 2023",
     summary:
-      "Overwater bungalows set on a lagoon that cycles through a dozen shades of turquoise. The Maldives exists at the edge of excess and dream — a place where silence is textured and the water does all the talking.",
+      "Overwater bungalows set on a lagoon that cycles through a dozen shades of turquoise. The Maldives exists at the edge of excess and dream - a place where silence is textured and the water does all the talking.",
     cover: p("maldives-cover", 1920, 1080),
     photos: [
       { url: p("maldives-1"), caption: "Overwater villas at dawn" },

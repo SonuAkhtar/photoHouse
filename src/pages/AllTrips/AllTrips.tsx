@@ -78,7 +78,7 @@ export default function AllTrips() {
           </div>
           <span className="all-trips_count">
             {loading
-              ? "—"
+              ? "-"
               : `${filtered.length} destination${filtered.length !== 1 ? "s" : ""}`}
           </span>
         </motion.div>

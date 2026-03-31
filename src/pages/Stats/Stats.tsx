@@ -90,7 +90,7 @@ export default function Stats() {
           </div>
         ) : trips.length === 0 ? (
           <motion.p className="stats-empty" {...fadeUp(0.3)}>
-            No trips yet — upload your first memory to start seeing stats.
+            No trips yet - upload your first memory to start seeing stats.
           </motion.p>
         ) : (
           <>
@@ -113,7 +113,7 @@ export default function Stats() {
                 <span className="stats-card_value">
                   {Object.keys(stats.regionList).length > 0
                     ? stats.regionList.length
-                    : "—"}
+                    : "-"}
                 </span>
                 <span className="stats-card_label">Countries visited</span>
               </div>

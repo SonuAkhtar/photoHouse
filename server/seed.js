@@ -14,7 +14,7 @@ const TRIPS = [
     region: "Cyclades · Greece",
     dates: "June 14 – 21, 2024",
     summary:
-      "Whitewashed walls tumbling down volcanic cliffs, the Aegean stretching out in every shade of blue. We chased sunsets from Oia each evening, watching the caldera light up like a slow ember. The donkey paths, the narrow alleys piled high with bougainvillea — nothing prepares you for how genuinely beautiful it is.",
+      "Whitewashed walls tumbling down volcanic cliffs, the Aegean stretching out in every shade of blue. We chased sunsets from Oia each evening, watching the caldera light up like a slow ember. The donkey paths, the narrow alleys piled high with bougainvillea - nothing prepares you for how genuinely beautiful it is.",
     accent: "#89B4C8",
     tags: ["landscape", "architecture", "sunset"],
     photos: [
@@ -30,7 +30,7 @@ const TRIPS = [
     region: "Kansai · Japan",
     dates: "March 28 – April 6, 2024",
     summary:
-      "Cherry blossoms carpeted the banks of the Kamo River and the temple gardens looked like paintings. We rose at 5am every morning to beat the crowds to Fushimi Inari, hiking the thousand torii gates in near silence. The tea ceremony, the moss garden at Saiho-ji, the wooden machiya townhouses — Kyoto gave us a week that felt like a month.",
+      "Cherry blossoms carpeted the banks of the Kamo River and the temple gardens looked like paintings. We rose at 5am every morning to beat the crowds to Fushimi Inari, hiking the thousand torii gates in near silence. The tea ceremony, the moss garden at Saiho-ji, the wooden machiya townhouses - Kyoto gave us a week that felt like a month.",
     accent: "#D4A0B0",
     tags: ["culture", "street", "sakura"],
     photos: [
@@ -47,7 +47,7 @@ const TRIPS = [
     region: "Haouz · Morocco",
     dates: "October 3 – 10, 2023",
     summary:
-      "The medina hits you like a wall of sensation — spice merchants, leather tanneries, the smell of cedar and cumin drifting through narrow souks. We got deliberately lost each afternoon, finding riads that opened onto hidden courtyards, stumbling on squares full of musicians and storytellers. The Atlas Mountains rose purple at every sunset beyond the rooftops.",
+      "The medina hits you like a wall of sensation - spice merchants, leather tanneries, the smell of cedar and cumin drifting through narrow souks. We got deliberately lost each afternoon, finding riads that opened onto hidden courtyards, stumbling on squares full of musicians and storytellers. The Atlas Mountains rose purple at every sunset beyond the rooftops.",
     accent: "#E8B87A",
     tags: ["street", "culture", "architecture"],
     photos: [
@@ -63,7 +63,7 @@ const TRIPS = [
     region: "Los Lagos · Chile",
     dates: "January 12 – 25, 2023",
     summary:
-      "Three weeks at the end of the world. Torres del Paine threw everything at us — blizzard one morning, blinding sunlight the next, the W Trek stretching through landscapes that felt borrowed from another planet. The granite towers turned shades of rose and amber at sunrise that I still can't quite believe I saw.",
+      "Three weeks at the end of the world. Torres del Paine threw everything at us - blizzard one morning, blinding sunlight the next, the W Trek stretching through landscapes that felt borrowed from another planet. The granite towers turned shades of rose and amber at sunrise that I still can't quite believe I saw.",
     accent: "#7ABAB0",
     tags: ["landscape", "trekking", "wilderness"],
     photos: [
@@ -81,7 +81,7 @@ const TRIPS = [
     region: "Uttar Pradesh · India",
     dates: "February 4 – 10, 2023",
     summary:
-      "No city prepares you for Varanasi. We arrived at the ghats before dawn, watching the Ganga reflect a thousand flames from the morning aarti. The old city is a labyrinth of temples and chai stalls and silk weavers working by lamplight. It is overwhelming in every sense — and completely impossible to forget.",
+      "No city prepares you for Varanasi. We arrived at the ghats before dawn, watching the Ganga reflect a thousand flames from the morning aarti. The old city is a labyrinth of temples and chai stalls and silk weavers working by lamplight. It is overwhelming in every sense - and completely impossible to forget.",
     accent: "#C87D5A",
     tags: ["street", "culture", "portrait"],
     photos: [
@@ -130,7 +130,7 @@ const TRIPS = [
     region: "Campania · Italy",
     dates: "July 8 – 16, 2022",
     summary:
-      "The road clings to the cliffs like an afterthought. We hired a small motorboat one afternoon and saw the whole coast from the sea — Positano stacked like a wedding cake, Ravello perched impossibly high, lemons the size of grapefruits at every roadside stall. We ate too much pasta. We regret nothing.",
+      "The road clings to the cliffs like an afterthought. We hired a small motorboat one afternoon and saw the whole coast from the sea - Positano stacked like a wedding cake, Ravello perched impossibly high, lemons the size of grapefruits at every roadside stall. We ate too much pasta. We regret nothing.",
     accent: "#7DAF6E",
     tags: ["landscape", "architecture", "food"],
     photos: [
@@ -222,7 +222,7 @@ async function seed() {
 
   await Profile.create({
     userId: user._id,
-    bio: "Travel photographer based out of a suitcase. I spend most of my time chasing light in places I've never been before — and trying to find the shot that justifies the early alarm.\n\nFormer software engineer turned full-time wanderer. I shoot mostly on Fujifilm and edit with the same restraint I rarely apply to ordering dessert.",
+    bio: "Travel photographer based out of a suitcase. I spend most of my time chasing light in places I've never been before - and trying to find the shot that justifies the early alarm.\n\nFormer software engineer turned full-time wanderer. I shoot mostly on Fujifilm and edit with the same restraint I rarely apply to ordering dessert.",
     quote:
       "The camera is an excuse to be someplace you otherwise don't belong.",
     gear: [
@@ -239,7 +239,7 @@ async function seed() {
       },
       {
         title: "Street Photography",
-        body: "A borrowed moment from a stranger's day. I love the ethics and the chaos of it — the discipline of seeing in a fraction of a second and committing to the frame.",
+        body: "A borrowed moment from a stranger's day. I love the ethics and the chaos of it - the discipline of seeing in a fraction of a second and committing to the frame.",
       },
       {
         title: "Golden Hour Light",
@@ -247,11 +247,11 @@ async function seed() {
       },
       {
         title: "Architecture",
-        body: "Old buildings tell stories through their erosion. A tiled courtyard, a peeling doorway, a stairwell catching a single shaft of light — these are the things I photograph when I'm not sure what else to shoot.",
+        body: "Old buildings tell stories through their erosion. A tiled courtyard, a peeling doorway, a stairwell catching a single shaft of light - these are the things I photograph when I'm not sure what else to shoot.",
       },
       {
         title: "Wildlife",
-        body: "Patience and stillness. The reward is not guaranteed and that's exactly the point. I am still learning to see animals the way the great wildlife photographers do — as subjects rather than prizes.",
+        body: "Patience and stillness. The reward is not guaranteed and that's exactly the point. I am still learning to see animals the way the great wildlife photographers do - as subjects rather than prizes.",
       },
     ],
   });
