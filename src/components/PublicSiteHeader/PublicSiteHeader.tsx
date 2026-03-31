@@ -4,13 +4,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, themeList } from "../../context/ThemeContext";
 import { usePub } from "../../context/PublicProfileContext";
 import "../SiteHeader/SiteHeader.css";
+import "./PublicSiteHeader.css";
 
 export default function PublicSiteHeader() {
   const { theme, setTheme } = useTheme();
   const { username, user } = usePub();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [avatarOpen, setAvatarOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const active = themeList.find((t) => t.id === theme)!;
@@ -27,6 +30,7 @@ export default function PublicSiteHeader() {
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (!pickerRef.current?.contains(e.target as Node)) setPickerOpen(false);
+      if (!avatarRef.current?.contains(e.target as Node)) setAvatarOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -37,6 +41,7 @@ export default function PublicSiteHeader() {
     setPrevPath(location.pathname);
     setMobileOpen(false);
     setPickerOpen(false);
+    setAvatarOpen(false);
   }
 
   useEffect(() => {
@@ -204,13 +209,33 @@ export default function PublicSiteHeader() {
             </AnimatePresence>
           </div>
 
-          <div
-            className="site-header_user-btn"
-            style={{ pointerEvents: "none" }}
-            title={user.name}
-            aria-label={user.name}
-          >
-            {(user.name?.charAt(0) || "?").toUpperCase()}
+          <div className="pub-avatar-wrap" ref={avatarRef}>
+            <button
+              className="site-header_user-btn"
+              onClick={() => setAvatarOpen((o) => !o)}
+              aria-label={`Photographer: ${user.name}`}
+              aria-expanded={avatarOpen}
+              title={user.name}
+            >
+              {(user.name?.charAt(0) || "?").toUpperCase()}
+            </button>
+            <AnimatePresence>
+              {avatarOpen && (
+                <motion.div
+                  className="pub-avatar-card"
+                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                  transition={{
+                    duration: 0.18,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
+                >
+                  <p className="pub-avatar-card_name">{user.name}</p>
+                  <p className="pub-avatar-card_username">@{username}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <button

@@ -246,11 +246,7 @@
 }
 
 .upload-modal_file-input {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  font-size: 0;
+  display: none;
 }
 
 .upload-modal_previews {
