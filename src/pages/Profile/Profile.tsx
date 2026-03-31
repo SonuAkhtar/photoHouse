@@ -6,7 +6,6 @@ import {
   fetchProfile,
   saveProfile,
   fetchTrips,
-  type ApiProfile,
   type ApiInterest,
   type ApiTrip,
 } from "../../services/api";

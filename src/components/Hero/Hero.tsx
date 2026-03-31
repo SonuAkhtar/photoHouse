@@ -113,8 +113,8 @@ export default function Hero({ count }: HeroProps) {
       y: gsap.quickSetter(p, "y", "px"),
     }));
 
-    let mouse = { x: 0, y: 0 };
-    let lerped = { x: 0, y: 0 };
+    const mouse = { x: 0, y: 0 };
+    const lerped = { x: 0, y: 0 };
 
     const onMove = (e: MouseEvent) => {
       const rect = section.getBoundingClientRect();
@@ -179,22 +179,21 @@ export default function Hero({ count }: HeroProps) {
 
   useEffect(() => {
     if (count === undefined || count === 0) return;
-    const tween = gsap.to(
-      { n: 0 },
-      {
-        n: count,
-        duration: 1.5,
-        delay: 0.8,
-        ease: "power3.out",
-        onUpdate() {
-          if (countRef.current) {
-            countRef.current.textContent = String(
-              Math.round((this as any).targets()[0].n),
-            ).padStart(2, "0");
-          }
-        },
+    const target = { n: 0 };
+    const tween = gsap.to(target, {
+      n: count,
+      duration: 1.5,
+      delay: 0.8,
+      ease: "power3.out",
+      onUpdate() {
+        if (countRef.current) {
+          countRef.current.textContent = String(Math.round(target.n)).padStart(
+            2,
+            "0",
+          );
+        }
       },
-    );
+    });
     return () => {
       tween.kill();
     };

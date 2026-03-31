@@ -49,9 +49,9 @@ export default function SiteHeader({ onTripCreated }: Props) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const prevPathRef = useRef(location.pathname);
-  if (prevPathRef.current !== location.pathname) {
-    prevPathRef.current = location.pathname;
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
     setMobileOpen(false);
     setPickerOpen(false);
     setUserMenuOpen(false);

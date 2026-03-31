@@ -11,13 +11,13 @@ api.interceptors.request.use((config) => {
 export const registerUser = (name: string, email: string, password: string) =>
   api.post<{
     token: string;
-    user: { id: string; name: string; email: string };
+    user: { id: string; name: string; email: string; username: string };
   }>("/auth/register", { name, email, password });
 
 export const loginUser = (email: string, password: string) =>
   api.post<{
     token: string;
-    user: { id: string; name: string; email: string };
+    user: { id: string; name: string; email: string; username: string };
   }>("/auth/login", { email, password });
 
 export const fetchTrips = () => api.get<ApiTrip[]>("/trips");

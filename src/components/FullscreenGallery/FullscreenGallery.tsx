@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Photo } from "../../data/trips";
 import "./FullscreenGallery.css";
 
@@ -19,15 +19,20 @@ export default function FullscreenGallery({
   const touchStartX = useRef<number | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const goTo = (newIndex: number, dir: "next" | "prev") => {
+  const goTo = useCallback((newIndex: number, dir: "next" | "prev") => {
     setAnimDir(dir);
     setAnimKey((k) => k + 1);
     setIndex(newIndex);
-  };
+  }, []);
 
-  const goNext = () => goTo((index + 1) % photos.length, "next");
-  const goPrev = () =>
-    goTo((index - 1 + photos.length) % photos.length, "prev");
+  const goNext = useCallback(
+    () => goTo((index + 1) % photos.length, "next"),
+    [goTo, index, photos.length],
+  );
+  const goPrev = useCallback(
+    () => goTo((index - 1 + photos.length) % photos.length, "prev"),
+    [goTo, index, photos.length],
+  );
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -37,7 +42,7 @@ export default function FullscreenGallery({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [index]);
+  }, [goNext, goPrev, onClose]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -55,7 +60,11 @@ export default function FullscreenGallery({
     if (touchStartX.current === null) return;
     const delta = e.changedTouches[0].clientX - touchStartX.current;
     if (Math.abs(delta) > 48) {
-      delta < 0 ? goNext() : goPrev();
+      if (delta < 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
     }
     touchStartX.current = null;
   };

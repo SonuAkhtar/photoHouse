@@ -7,6 +7,7 @@ export interface ThemeConfig {
   swatches: [string, string, string];
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const themeList: ThemeConfig[] = [
   {
     id: "noir",
@@ -71,4 +72,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => useContext(ThemeContext);
